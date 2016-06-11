@@ -105,13 +105,13 @@ def main(wf):
     # the list of results for Alfred
     for project in projects:
         wf.add_item(title=project['name'],
-                    subtitle='Klant: ' + project['client'],
+                    subtitle='Client: ' + project['client'] + '. Project state: ' + project['project_state'],
                     modifier_subtitles={
                         #'shift': 'Subtext when shift is pressed',
                         #'fn': 'Subtext when fn is pressed',
                         #'ctrl': 'Subtext when ctrl is pressed',
-                        'alt': 'Subtext when alt is pressed',
-                        'cmd': str(project['id'])
+                        'alt': 'tags: ' + str(project['tags']['data']),
+                        'cmd': 'id: ' + str(project['id']) + 'guid: ' + project['guid']
                     },
                     arg=str(project['id']),
                     valid=True,
