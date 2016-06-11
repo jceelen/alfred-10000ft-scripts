@@ -7,7 +7,5 @@ A very simple first version of a workflow for 10.000ft with 1 feature: opening t
 - [Alfred App](https://www.alfredapp.com) (tested on v3)
 
 ##Usage
-- First run: Copy your API key to the clipboard, use `.10ftget` and follow instructions to get your data
-- `10ft` will show a list of projects 
-
-Note that there is not a real-time connection (yet), so run `.10ftget` again to update your projects. 
+- First run: Copy your API key to the clipboard, and use `.10ksetkey` to save your API key in the OSX Keychain
+- `10k` will show a list of projects 
