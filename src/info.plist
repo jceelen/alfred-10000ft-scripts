@@ -98,29 +98,10 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://app.10000ft.com/editproject?id={query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>1B166B48-F3F1-4855-98C1-42A46A60933F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>10khome</string>
+				<string>10k home</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
@@ -200,21 +181,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>10kplan</string>
-				<key>subtext</key>
+				<key>browser</key>
 				<string></string>
-				<key>text</key>
-				<string>Open Planning in 10.000ft</string>
-				<key>withspace</key>
-				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://app.10000ft.com/editproject?id={query}</string>
+				<key>utf8</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>717F7DBF-E647-473B-B08D-437D73704E8C</string>
+			<string>1B166B48-F3F1-4855-98C1-42A46A60933F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -240,21 +219,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>10k plan</string>
+				<key>subtext</key>
+				<string></string>
 				<key>text</key>
-				<string>Your 10.000ft API key was saved</string>
-				<key>title</key>
-				<string>Saved API key</string>
+				<string>Open Planning in 10.000ft</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>076F3B92-B58D-43DB-ACE0-FD0E879D2563</string>
+			<string>717F7DBF-E647-473B-B08D-437D73704E8C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -305,21 +284,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>.10ksetkey</string>
-				<key>subtext</key>
-				<string>Open API request page in your browser</string>
-				<key>text</key>
-				<string>Request an API key from 10.000ft website</string>
-				<key>withspace</key>
+				<key>lastpathcomponent</key>
 				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Your 10.000ft API key was saved</string>
+				<key>title</key>
+				<string>Saved API key</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>FF6008F2-59CC-4F28-B107-A3FA9E10D552</string>
+			<string>076F3B92-B58D-43DB-ACE0-FD0E879D2563</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -339,6 +318,27 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>902B9660-A2BE-44BE-943C-775B37DEC7E0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>.10ksetkey</string>
+				<key>subtext</key>
+				<string>Open API request page in your browser</string>
+				<key>text</key>
+				<string>Request an API key from 10.000ft website</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>FF6008F2-59CC-4F28-B107-A3FA9E10D552</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>

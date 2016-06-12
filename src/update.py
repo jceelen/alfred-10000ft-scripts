@@ -69,7 +69,7 @@ def main(wf):
             """
             return get_projects(api_key)
 
-        posts = wf.cached_data('projects', wrapper, max_age=600)
+        posts = wf.cached_data('projects', wrapper, max_age=60)
         # Record our progress in the log file
         wf.logger.debug('{} projects cached from 10.000ft'.format(len(posts)))
 

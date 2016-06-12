@@ -4,11 +4,10 @@ import argparse
 from workflow import (Workflow, ICON_WEB, ICON_INFO, ICON_WARNING, PasswordNotFound)
 from workflow.background import run_in_background, is_running
 
-UPDATE_SETTINGS = {
-    # Your username and the workflow's repo's name
-    'github_slug': 'jceelen/alfred-10000ft-scripts',
-    'frequency': 7
-    }
+UPDATE_SETTINGS = {'github_slug': 'jceelen/alfred-10000ft-scripts'}
+ICON_UPDATE = 'update-available.png'
+
+# Shown in error logs. Users can find help here
 HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
 
 log = None
@@ -25,6 +24,13 @@ def search_key_for_project(project):
 
 
 def main(wf):
+    # Update available?
+    if wf.update_available:
+        wf.add_item('A newer version is available',
+                    '↩ to install update',
+                    autocomplete='workflow:update',
+                    icon=ICON_UPDATE)
+
     log.debug('Main Started')
     # build argument parser to parse script args and collect their
     # values
@@ -65,13 +71,6 @@ def main(wf):
     ####################################################################
     # View/filter 10.000ft projects
     ####################################################################
-    # Check for update
-    if (wf.update_available and
-            wf.settings.get('show_update_notification', True)):
-        wf.add_item('Update available',
-                    '↩ to install update',
-                    autocomplete='workflow:update',
-                    icon='icons/update-available.png')
 
     # Get query from Alfred
     query = args.query
@@ -82,7 +81,7 @@ def main(wf):
     projects = wf.cached_data('projects', None, max_age=0)
 
     # Start update script if cached data is too old (or doesn't exist)
-    if not wf.cached_data_fresh('posts', max_age=600):
+    if not wf.cached_data_fresh('posts', max_age=60):
         cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
         run_in_background('update', cmd)
 
@@ -122,7 +121,8 @@ def main(wf):
     wf.send_feedback()
     return 0
 
-if __name__ == u"__main__":
-    wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
+if __name__ == '__main__':
+    wf = Workflow(help_url=HELP_URL,
+                  update_settings=UPDATE_SETTINGS)
     log = wf.logger
     sys.exit(wf.run(main))
