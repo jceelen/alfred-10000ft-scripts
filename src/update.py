@@ -1,17 +1,16 @@
 # encoding: utf-8
-import json
+
 from workflow import web, Workflow, PasswordNotFound
 
-log = None
 
 def get_projects(api_key):
-    log.debug('Get Projects Started')
     """Retrieve all projects from 10.000ft
 
     Returns a list of project dictionaries.
 
     """ 
     
+    import json
     from lib import pycurl    
     from StringIO import StringIO
     from urllib import urlencode
@@ -39,7 +38,6 @@ def get_projects(api_key):
     #Do the request
     c = pycurl.Curl()
     c.setopt(c.URL, url + '?' + params) 
-    #log.debug(url + '?' + params)
     c.setopt(c.WRITEDATA, buffer)
     c.perform()
     c.close()
@@ -49,9 +47,6 @@ def get_projects(api_key):
     result = json.loads(result)
     projects = result['data']
 
-    log.debug('Number of projects fetched: ')
-    log.debug(len(projects))
-    
     return projects
 
 def main(wf):
@@ -59,7 +54,7 @@ def main(wf):
         # Get API key from Keychain
         api_key = wf.get_password('10k_api_key')
 
-        # Retrieve posts from cache if available and no more than 600
+        # Retrieve projects from cache if available and no more than 600
         # seconds old
 
         def wrapper():
@@ -69,9 +64,9 @@ def main(wf):
             """
             return get_projects(api_key)
 
-        posts = wf.cached_data('projects', wrapper, max_age=60)
+        projects = wf.cached_data('projects', wrapper, max_age=600)
         # Record our progress in the log file
-        wf.logger.debug('{} projects cached from 10.000ft'.format(len(posts)))
+        wf.logger.debug('{} projects cached from 10.000ft'.format(len(projects)))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it
@@ -79,5 +74,4 @@ def main(wf):
 
 if __name__ == '__main__':
     wf = Workflow()
-    log = wf.logger
     wf.run(main)
