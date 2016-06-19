@@ -27,7 +27,6 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 - `10k analytics` — open the Analytics view
 
 ## Changelog
-
 #### v0.4
 - Added submenu with options for every project
 - Changed usage
