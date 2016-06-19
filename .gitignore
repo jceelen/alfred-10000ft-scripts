@@ -2,4 +2,5 @@ src/info.dist.plist
 src/info.daj.plist
 TODO
 data.json
+src/test.py
 *.pyc
