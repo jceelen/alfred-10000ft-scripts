@@ -66,7 +66,7 @@ def main(wf):
 
         projects = wf.cached_data('projects', wrapper, max_age=600)
         # Record our progress in the log file
-        wf.logger.debug('{} projects cached from 10.000ft'.format(len(projects)))
+        wf.logger.info('{} projects cached from 10.000ft'.format(len(projects)))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it

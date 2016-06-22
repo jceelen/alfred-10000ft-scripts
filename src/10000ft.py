@@ -2,12 +2,12 @@
 import sys
 import argparse
 from urllib import urlencode, unquote_plus
-from workflow import (Workflow, ICON_WEB, ICON_INFO, ICON_WARNING, PasswordNotFound)
+from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
 
 # Update data
 UPDATE_SETTINGS = {'github_slug': 'jceelen/alfred-10000ft-scripts'}
-ICON_UPDATE = 'update-available.png'
+ICON_UPDATE = 'icons/update_available.png'
 
 # Shown in error logs. Users can find help here
 HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
@@ -35,12 +35,13 @@ def get_project_data(project_id):
 
 def main(wf):   
     wf.logger.info('main started')
+    
     # Update available?
     if wf.update_available:
         wf.add_item('A newer version is available',
                     'Press ENTER to install update',
                     autocomplete='workflow:update',
-                    icon=ICON_UPDATE)
+                    icon='update_available.png')
 
     # build argument parser to parse script args and collect their
     # values
@@ -51,6 +52,7 @@ def main(wf):
     parser.add_argument('--setkey', dest='apikey', nargs='?', default=None)
     parser.add_argument('--setuser', dest='user', nargs='?', default=None)
     parser.add_argument('--options', dest='project_id', nargs='?', default=None)
+    parser.add_argument('--user', dest='user_tag', nargs='?', default=None)
     # add an optional query and save it to 'query'
     parser.add_argument('query', nargs='?', default=None)
     # parse the script's arguments
@@ -69,6 +71,8 @@ def main(wf):
         # save the key
         wf.settings['user'] = args.user.lower()
         return 0  # 0 means script exited cleanly
+    # if the --user argument is passed    
+    user_tag = wf.settings['user']
 
     ####################################################################
     # Check that we have an API key saved
@@ -80,7 +84,7 @@ def main(wf):
         wf.add_item('No API key set.',
                     'Please use .10ksetkey to set your 10.000ft API key.',
                     valid=False,
-                    icon=ICON_WARNING)
+                    icon='icons/warning.png')
         wf.send_feedback()
         return 0
 
@@ -103,9 +107,9 @@ def main(wf):
 
     # Notify the user if the cache is being updated
     if is_running('update'):
-        wf.add_item('Getting new projects from 10.000ft',
+        wf.add_item('Fetching data from 10.000ft...',
                     valid=False,
-                    icon=ICON_INFO)
+                    icon='icons/fetching_data.png')
     
     # If script was passed a query, use it to filter projects
     if query and projects:
@@ -113,7 +117,7 @@ def main(wf):
 
     # we have no data to show, so show a warning and stop
     if not projects:  
-        wf.add_item('No projects found', icon=ICON_WARNING)
+        wf.add_item('No projects found', icon='icons/warning.png')
         wf.send_feedback()
         return 0
 
@@ -149,17 +153,55 @@ def main(wf):
                     subtitle=project['name'],
                     arg='viewproject?id=' + str(project['id']),
                     valid=True,
-                    icon='icons/icon_project_{0}.png'.format(project['project_state']).lower())
+                    icon='icons/project_view.png'
+                    )
         wf.add_item(title='Edit project',
                     subtitle=project['name'],
                     arg='editproject?id=' + str(project['id']),
                     valid=True,
-                    icon='icons/icon_project_{0}.png'.format(project['project_state']).lower())
-        wf.add_item(title='Run report for project',
+                    icon='icons/project_edit.png'
+                    )
+        wf.add_item(title='Budget report time for project',
                     subtitle=project['name'],
                     arg='reports?' + params,
                     valid=True,
-                    icon='icons/icon_project_{0}.png'.format(project['project_state']).lower())
+                    icon='icons/project_budget_report_time.png'
+                    )
+        """
+        wf.add_item(title='Budget report fees for project',
+                                            subtitle=project['name'],
+                                            arg='reports?' + params,
+                                            valid=True,
+                                            icon='icons/project_budget_report_fees.png'
+                                            )
+        """
+        wf.send_feedback()
+    
+    # Show only projects that where the user setting matches a tag
+    if wf.args[0] == '--user':
+        for project in projects:
+            
+            # WIP Extract tags from data for every project and put them in a list
+            tags = project['tags']['data']
+            taglist = []
+            for tag in tags:
+                taglist.append(tag['value'].lower())
+            
+            if user_tag in taglist:
+
+                wf.add_item(title=project['name'],
+                            subtitle='ENTER to view project, press ALT to show more info.',
+                            modifier_subtitles={
+                                #'shift': 'Subtext when shift is pressed',
+                                #'fn': 'Subtext when ctrl is pressed',
+                                'alt': 'Client: ' + project['client'] + ' | Tags: ' + str(taglist),
+                                'ctrl': 'View in 10.000ft',
+                                'cmd': 'Edit in 10.000ft, CMD+C to copy name.'
+                                },
+                            arg=str(project['id']),
+                            valid=True,
+                            icon='icons/project_{0}.png'.format(project['project_state']).lower(),
+                            copytext=project['name'])
         wf.send_feedback()
 
     # Show list of projects
@@ -185,7 +227,7 @@ def main(wf):
                             },
                         arg=str(project['id']),
                         valid=True,
-                        icon='icons/icon_project_{0}.png'.format(project['project_state']).lower(),
+                        icon='icons/project_{0}.png'.format(project['project_state']).lower(),
                         copytext=project['name'])
         
         # Send the results to Alfred as XML
