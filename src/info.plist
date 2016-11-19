@@ -329,7 +329,7 @@
 			<key>config</key>
 			<dict>
 				<key>browser</key>
-				<string></string>
+				<string>com.google.Chrome</string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
@@ -410,7 +410,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"Open 10.000ft Homepage","arg":"https:\/\/app.10000ft.com"},{"title":"Open Planning in 10.000ft","arg":"https:\/\/app.10000ft.com\/plan"},{"title":"Open Analytics in 10.000ft","arg":"https:\/\/app.10000ft.com\/analytics"}]</string>
+				<string>[{"title":"Open 10.000ft Homepage"},{"title":"Open Planning in 10.000ft","arg":"plan"},{"title":"Open Analytics in 10.000ft","arg":"analytics"}]</string>
 				<key>keyword</key>
 				<string>10k</string>
 				<key>runningsubtext</key>
@@ -560,6 +560,27 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Your 10.000ft User-tag-name was saved</string>
+				<key>title</key>
+				<string>Saved User-tag-name</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>3668DFDF-7AFB-4D3F-B635-406C3854E6E9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -588,14 +609,14 @@
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>Your 10.000ft User-tag-name was saved</string>
+				<string>Fetching data from 10.000ft API</string>
 				<key>title</key>
-				<string>Saved User-tag-name</string>
+				<string>Update running</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>3668DFDF-7AFB-4D3F-B635-406C3854E6E9</string>
+			<string>A9549725-D924-404E-BBE3-73AF805EF960</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -621,27 +642,6 @@
 			<string>03C71B74-6579-4FA8-8421-B17D6F15D23C</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Fetching data from 10.000ft API</string>
-				<key>title</key>
-				<string>Update running</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>A9549725-D924-404E-BBE3-73AF805EF960</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>

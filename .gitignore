@@ -3,4 +3,5 @@ src/info.daj.plist
 TODO
 data.json
 src/test.py
+*.DS_Store
 *.pyc
