@@ -66,22 +66,19 @@ def build_report_params(view, project):
               ('secondgroup', 'user_name'),
               ('filters', '[["' + project['name'] + '"],[],["' + project['client'] + '"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
               ('version', 2),
-              ('title', 'Rapportage: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
+              ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
     params = urlencode(params)
     #wf.logger.debug('PARAMS: https://app.10000ft.com/reports?' + params)
     
-    return str('reports?' + params)
+    return str('https://app.10000ft.com/reports?' + params)
 
-"""
-def update_project(project_id):
+
+def toggle_archive_project(project_id):
     #Update specific project in 10.000ft
     
     import json
-    from lib import pycurl    
-    from StringIO import StringIO
-
-    buffer = StringIO()
+    from lib import pycurl
 
     #try?
     api_key = wf.get_password('10k_api_key')
@@ -101,7 +98,7 @@ def update_project(project_id):
               #'with_phases' : 'false',
               #'per_page' : 10000,
               }
-    params = urlencode(params)                
+    params = urlencode(params)
 
     data = json.dumps({"id" : project_id, "archived" : "true"})
     
@@ -116,7 +113,6 @@ def update_project(project_id):
     c.setopt(pycurl.POSTFIELDS,data)
     c.perform()
     c.close()
-"""
 
 def main(wf):   
     wf.logger.info('main started')
@@ -150,6 +146,10 @@ def main(wf):
     # If --options is added as an argument, save its value to 'project_id' (dest)
     # This will be used to show the list of options for the selected project
     parser.add_argument('--options', dest='project_id', nargs='?', default=None)
+    
+    # If --toggle_archive_project is added as an argument, save its value to 'project_id' (dest)
+    # This will be used toggle the archived status for the selected project
+    parser.add_argument('--toggle_archive_project', dest='project_id', nargs='?', default=None)
     
     # Add an optional query and save it to 'query'
     parser.add_argument('query', nargs='?', default=None)
@@ -185,6 +185,16 @@ def main(wf):
                     icon='icons/warning.png')
         wf.send_feedback()
         return 0
+
+    ####################################################################
+    # Update projects
+    ####################################################################
+
+    # If argument --toggle_archive_project is passed on update the project.
+    if wf.args[0] == '--toggle_archive_project':
+        wf.logger.debug(args.project_id)
+        #toggle_archive_project(project_id)
+        return 0  # 0 means script exited cleanly
 
 
     ####################################################################
@@ -234,36 +244,33 @@ def main(wf):
         # Add options for projects 
         wf.add_item(title='View project',
                     subtitle=project['name'],
-                    arg='viewproject?id=' + str(project['id']),
+                    arg='https://app.10000ft.com/viewproject?id=' + str(project['id']),
                     valid=True,
                     icon='icons/project_view.png'
                     )
         wf.add_item(title='Edit project',
                     subtitle=project['name'],
-                    arg='editproject?id=' + str(project['id']),
+                    arg='https://app.10000ft.com/editproject?id=' + str(project['id']),
                     valid=True,
                     icon='icons/project_edit.png'
                     )
         wf.add_item(title='Budget report time for project',
                     subtitle=project['name'],
                     arg=report_time,
-                    copytext='https://app.10000ft.com/' + str(build_report_params(10, project)),
                     valid=True,
                     icon='icons/project_budget_report_time.png'
                     )
         wf.add_item(title='Budget report fees for project',
                     subtitle=project['name'],
                     arg=report_fees,
-                    copytext='https://app.10000ft.com/' + str(build_report_params(8, project)),
                     valid=True,
                     icon='icons/project_budget_report_fees.png'
                     )
         wf.add_item(title='WIP: Archive Project',
                     subtitle=project['name'],
-                    arg=report_fees,
-                    copytext='https://app.10000ft.com/' + str(build_report_params(8, project)),
+                    arg='toggle_archive_project',
                     valid=True,
-                    icon='icons/project_budget_report_fees.png'
+                    icon='icons/project_edit.png'
                     )
         wf.send_feedback()
 
