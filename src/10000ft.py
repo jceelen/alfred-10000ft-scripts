@@ -18,7 +18,7 @@ def search_key_for_project(project):
     """Generate a string search key for a post"""
     elements = []
     elements.append(project['name'])  # projectnaam
-    elements.append(project['client'])  # klant
+    #DISABLED because client is generating an error# elements.append(project['client'])  # klant
     elements.append(project['project_state'])  # status
     elements.append(str(project['project_code']))  # projectcode
     return u' '.join(elements)
@@ -39,7 +39,7 @@ def add_project(project):
             modifier_subtitles={
                 #'shift': 'Subtext when shift is pressed',
                 #'fn': 'Subtext when ctrl is pressed',
-                # DISABLED because client is generating an error - 'alt': 'Client: ' + project['client'] + ' | Tags: ' + str(taglist),
+                # DISABLED because client is generating an error# 'alt': 'Client: ' + project['client'] + ' | Tags: ' + str(taglist),
                 'ctrl': 'View in 10.000ft',
                 'cmd': 'Edit in 10.000ft, CMD+C to copy name.'
                 },
@@ -272,31 +272,26 @@ def main(wf):
     # Show List of projects
     ####################################################################
 
-    # Only show projects of current user if the argument --user is passed on
-    if wf.args[0] == '--user':
+    # Get the user tag from wf.settings
+    user_tag = wf.settings['user']
+
+    # Loop through the returned projects and add an item for each to the list of results for Alfred
+    for project in projects:
+        # Extract tags from data and put them in a list
+        taglist = build_taglist(project['tags']['data'])
+        # Only show projects of current user if the argument --user is passed on
         # TODO: show errormessage if wf.settings['user'] is empty
-        # TODO: incorporate this in the normal 'show projects'
-        user_tag = wf.settings['user']
-        for project in projects:
-            # Extract tags from data and put them in a list
-            taglist = build_taglist(project['tags']['data'])
-            # Show a project if the current user_tag is in the list of tags.
+        if wf.args[0] == '--user':
+            # Check if the current user_tag is in the list of tags for this project.
             if user_tag in taglist:
                 # Add the project to the list as an item
                 add_project(project)
-        wf.send_feedback()
-
-    # Show ALL projects
-    else: 
-        # Loop through the returned projects and add an item for each to the list of results for Alfred
-        for project in projects:
-            # Extract tags from data and put them in a list
-            taglist = build_taglist(project['tags']['data'])
-            # Add the project to the list as an item
+        else:
+            # Add the project to the list as an item           
             add_project(project)
-        # Send the results to Alfred as XML
-        wf.send_feedback()
-        return 0
+    # Send the results to Alfred as XML
+    wf.send_feedback()
+    return 0
 
 
 if __name__ == '__main__':
