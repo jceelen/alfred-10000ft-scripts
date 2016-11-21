@@ -308,7 +308,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --options "{query}"</string>
+				<string>/usr/bin/python 10000ft.py --options {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -397,10 +397,7 @@
 				<key>argument</key>
 				<string>{query}</string>
 				<key>variables</key>
-				<dict>
-					<key>project_id</key>
-					<string>{query}</string>
-				</dict>
+				<dict/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.argument</string>
@@ -530,7 +527,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --"{var:action}" "{var:project_id}"</string>
+				<string>/usr/bin/python {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -553,9 +550,9 @@
 				<key>matchcasesensitive</key>
 				<false/>
 				<key>matchmode</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>matchstring</key>
-				<string>toggle_archive_project</string>
+				<string>(^(10000ft.py --))</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
@@ -855,7 +852,7 @@
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
 		<dict>
 			<key>note</key>
-			<string>if action is archive</string>
+			<string>if query starts with '10000ft.py --'</string>
 			<key>xpos</key>
 			<integer>820</integer>
 			<key>ypos</key>
@@ -863,6 +860,8 @@
 		</dict>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<dict>
+			<key>note</key>
+			<string>Run project specific commands</string>
 			<key>xpos</key>
 			<integer>960</integer>
 			<key>ypos</key>

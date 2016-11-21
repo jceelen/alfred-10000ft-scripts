@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # encoding: utf-8
+from __future__ import unicode_literals
 
 from workflow import web, Workflow, PasswordNotFound
 

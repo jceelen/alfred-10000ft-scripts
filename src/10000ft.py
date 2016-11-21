@@ -1,9 +1,13 @@
+#!/usr/bin/python
 # encoding: utf-8
+from __future__ import unicode_literals
+
 import sys
 import argparse
-from urllib import urlencode, unquote_plus, quote_plus, quote
+from urllib import urlencode, quote
 from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
+#import os
 
 # Update data
 UPDATE_SETTINGS = {'github_slug': 'jceelen/alfred-10000ft-scripts'}
@@ -75,39 +79,23 @@ def build_report_params(view, project):
 
 
 def toggle_archive_project(project_id):
+    wf.logger.info('started function toggle_archive_project')
     #Update specific project in 10.000ft
-    
     import json
     from lib import pycurl
 
     #try?
     api_key = wf.get_password('10k_api_key')
 
-    url = 'https://api.10000ft.com/api/v1/projects/' + project_id
-    params = {'auth' : api_key
-              #'from' : '2016-01-01',
-              #'to' : '',
-              #'fields' : 'tags, budget_items, project_state, phase_count',
-              #'filter_field' : 'project_state',    #The property to filter on
-              #'filter_list' : '',  #Options: Internal, Tentative, Confirmed
-              #'sort_field' : 'updated',
-              #'sort_order' : 'descending',
-              #'project_code' : '',
-              #'phase_name' : '',
-              #'with_archived' : 'false',
-              #'with_phases' : 'false',
-              #'per_page' : 10000,
-              }
-    params = urlencode(params)
-
-    data = json.dumps({"id" : project_id, "archived" : "true"})
+    url = 'https://api.10000ft.com/api/v1/projects/' + str(project_id) + '?auth=' +str(api_key)
+    #wf.logger.debug('url: ' + str(url))
     
-    #wf.logger.debug('url: ' str(url + '?' + params))
-    #wf.logger.debug('data: ' str(data))
+    data = json.dumps({"id" : project_id, "archived" : "true"})
+    #wf.logger.debug('data: ' + str(data))
 
     #Do the request
     c = pycurl.Curl()
-    c.setopt(c.URL, url + '?' + params) 
+    c.setopt(c.URL, url) 
     c.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json'])
     c.setopt(pycurl.CUSTOMREQUEST, "PUT")
     c.setopt(pycurl.POSTFIELDS,data)
@@ -115,7 +103,7 @@ def toggle_archive_project(project_id):
     c.close()
 
 def main(wf):   
-    wf.logger.info('main started')
+    wf.logger.info('started main')
     
     # Update available?
     if wf.update_available:
@@ -192,8 +180,9 @@ def main(wf):
 
     # If argument --toggle_archive_project is passed on update the project.
     if wf.args[0] == '--toggle_archive_project':
-        wf.logger.debug(args.project_id)
-        #toggle_archive_project(project_id)
+        wf.logger.info('started  --toggle_archive_project')
+        #wf.logger.debug(args.project_id)
+        toggle_archive_project(args.project_id)
         return 0  # 0 means script exited cleanly
 
 
@@ -266,9 +255,9 @@ def main(wf):
                     valid=True,
                     icon='icons/project_budget_report_fees.png'
                     )
-        wf.add_item(title='WIP: Archive Project',
+        wf.add_item(title='Archive project',
                     subtitle=project['name'],
-                    arg='toggle_archive_project',
+                    arg='10000ft.py --toggle_archive_project ' + str(project['id']),
                     valid=True,
                     icon='icons/project_edit.png'
                     )
