@@ -382,7 +382,7 @@
 				<key>matchmode</key>
 				<integer>2</integer>
 				<key>matchstring</key>
-				<string>[-a-zA-Z0-9@:%_\+.~#?&amp;//=]{2,256}\.[a-z]{2,256}\b(\/[-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)?</string>
+				<string>(^(http))</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>

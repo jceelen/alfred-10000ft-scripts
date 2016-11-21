@@ -259,8 +259,14 @@ def main(wf):
                     subtitle=project['name'],
                     arg='10000ft.py --toggle_archive_project ' + str(project['id']),
                     valid=True,
-                    icon='icons/project_edit.png'
+                    icon='icons/project_archive.png'
                     )
+        """wf.add_item(title='Archive project',
+        subtitle=project['name'],
+        arg='10000ft.py --toggle_archive_project ' + str(project['id']),
+        valid=True,
+        icon='icons/project_unarchive.png'
+        )"""
         wf.send_feedback()
 
 
