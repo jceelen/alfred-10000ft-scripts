@@ -1,12 +1,20 @@
 #!/usr/bin/python
 # encoding: utf-8
 
+# About encoding: 
+# Best practice in Python programs is to use Unicode internally and decode all 
+# text input and encode all text output at IO boundaries (i.e. right where it 
+# enters/leaves your program). On OS X, UTF-8 is almost always the right 
+# encoding. 
+# Be sure to decode all input from and encode all output to the system 
+# (in particular via subprocess and when passing a {query} to a subsequent 
+# workflow action).
+
 # Because we want to work with Unicode, it's simpler if we make
 # literal strings in source code Unicode strings by default, so
 # we set `encoding: utf-8` at the very top of the script to tell Python
 # that this source file is UTF-8 and import `unicode_literals` before any
 # code.
-
 from __future__ import unicode_literals, print_function
 
 import sys
@@ -26,19 +34,23 @@ HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
 
 log = None
 
-def whatisthis(s):
+# function for debugging purposes, it determines the type of a variable
+# wf.logger.debug('YOURVARIABLE is a: ' + whatisthis(yourvariable))
+def whatisthis(s, name):
     if isinstance(s, str):
-        return "ordinary string"
+        result = 'ordinary string'
     elif isinstance(s, unicode):
-        return "unicode string"
+        result = 'unicode string'
     else:
-        return "not a string"
+        result = 'not a string but a: ' + str(type(s))
+
+    return wf.logger.debug('your variable ' + name + ' is a: ' + result)
 
 def search_key_for_project(project):
     """Generate a string search key for a post"""
     elements = []
     elements.append(project['name'])  # projectnaam
-    #DISABLED because client is generating an error# elements.append(project['client'])  # klant
+    elements.append(project['client'])  # klant
     elements.append(project['project_state'])  # status
     elements.append(str(project['project_code']))  # projectcode
     return u' '.join(elements)
@@ -53,13 +65,14 @@ def get_project_data(project_id):
         if int(project['id']) == int(project_id):
             return project
 
+
 def add_project(project):
     wf.add_item(title=project['name'],
             subtitle='ENTER to view project, press ALT to show more info.',
             modifier_subtitles={
                 #'shift': 'Subtext when shift is pressed',
                 #'fn': 'Subtext when ctrl is pressed',
-                # DISABLED because client is generating an error# 'alt': 'Client: ' + project['client'] + ' | Tags: ' + str(taglist),
+                'alt': 'Client: ' + project['client'] + ' | Tags: ',# + str(taglist),
                 'ctrl': 'View in 10.000ft',
                 'cmd': 'Edit in 10.000ft, CMD+C to copy name.'
                 },
@@ -68,11 +81,13 @@ def add_project(project):
             icon='icons/project_{0}.png'.format(project['project_state']).lower(),
             copytext=project['name'])
 
+
 def build_taglist(tags):
     taglist = []
     for tag in tags:
         taglist.append(tag['value'].lower())    
     return taglist
+
 
 def build_report_params(view, project):
     from datetime import datetime
@@ -119,6 +134,7 @@ def toggle_archive_project(project_id):
     c.close()
     wf.logger.info('finished function toggle_archive_project')
 
+
 def toggle_delete_project(project_id):
     wf.logger.info('started function toggle_delete_project')
     #Update specific project in 10.000ft
@@ -142,6 +158,7 @@ def toggle_delete_project(project_id):
     c.close()
     wf.logger.info('finished function toggle_delete_project')
 
+
 def main(wf):   
     wf.logger.info('started main')
     
@@ -161,7 +178,7 @@ def main(wf):
     parser = argparse.ArgumentParser()
 
     # If --setkey is added as an argument, add an optional (nargs='?') and save its value to 'apikey' (dest). 
-    # This will be called from a separate "Run Script" action with the API key
+    # This will be called from a separate 'Run Script' action with the API key
     parser.add_argument('--setkey', dest='apikey', nargs='?', default=None)
     # If --setuser is added as an argument, save its value to 'user' (dest)
     # This will be used to safe the tag of the user in wf.settings
@@ -240,7 +257,7 @@ def main(wf):
 
     # Get query from Alfred
     query = args.query
-    
+
     # Get posts from cache. Set `data_func` to None, as we don't want to
     # update the cache in this script and `max_age` to 0 because we want
     # the cached data regardless of age

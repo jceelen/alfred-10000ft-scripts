@@ -1,6 +1,11 @@
 #!/usr/bin/python
 # encoding: utf-8
 
+# About encoding: 
+# Best practice in Python programs is to use Unicode internally and decode all 
+# text input and encode all text output at IO boundaries (i.e. right where it 
+# enters/leaves your program). On OS X, UTF-8 is almost always the right encoding.
+
 # Because we want to work with Unicode, it's simpler if we make
 # literal strings in source code Unicode strings by default, so
 # we set `encoding: utf-8` at the very top of the script to tell Python
@@ -16,9 +21,7 @@ from workflow import web, Workflow, PasswordNotFound
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
-
     Returns a list of project dictionaries.
-
     """ 
     
     import json
@@ -56,8 +59,18 @@ def get_projects(api_key):
     # Parse the JSON returned by 10.000ft and extract the projects
     result = buffer.getvalue()
     result = json.loads(result)
+    
+    # Store the result in a projects library
     projects = result['data']
 
+    # Cycle through projects to modify data if necessary 
+    for project in projects:
+      # If the value of client is None this can cause problems, let's find them
+      if project['client'] is None:
+        # replace none values with an empty string
+        project['client'] = ''
+
+    # Return projects as a library with updated data
     return projects
 
 def main(wf):
