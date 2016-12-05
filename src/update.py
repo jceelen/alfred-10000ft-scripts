@@ -1,7 +1,16 @@
 #!/usr/bin/python
 # encoding: utf-8
+
+# Because we want to work with Unicode, it's simpler if we make
+# literal strings in source code Unicode strings by default, so
+# we set `encoding: utf-8` at the very top of the script to tell Python
+# that this source file is UTF-8 and import `unicode_literals` before any
+# code.
+#
+# See Tip further down the page for more info
 from __future__ import unicode_literals
 
+import subprocess
 from workflow import web, Workflow, PasswordNotFound
 
 

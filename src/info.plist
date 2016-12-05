@@ -510,7 +510,7 @@
 				<key>text</key>
 				<string>Your Project is archived or un-archived in 10.000ft</string>
 				<key>title</key>
-				<string>Project Archived Status Updated</string>
+				<string>{query}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>

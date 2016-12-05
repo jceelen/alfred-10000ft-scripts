@@ -1,9 +1,17 @@
 #!/usr/bin/python
 # encoding: utf-8
-from __future__ import unicode_literals
+
+# Because we want to work with Unicode, it's simpler if we make
+# literal strings in source code Unicode strings by default, so
+# we set `encoding: utf-8` at the very top of the script to tell Python
+# that this source file is UTF-8 and import `unicode_literals` before any
+# code.
+
+from __future__ import unicode_literals, print_function
 
 import sys
 import argparse
+import subprocess
 from urllib import urlencode, quote
 from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
@@ -17,6 +25,14 @@ ICON_UPDATE = 'icons/update_available.png'
 HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
 
 log = None
+
+def whatisthis(s):
+    if isinstance(s, str):
+        return "ordinary string"
+    elif isinstance(s, unicode):
+        return "unicode string"
+    else:
+        return "not a string"
 
 def search_key_for_project(project):
     """Generate a string search key for a post"""
@@ -101,6 +117,30 @@ def toggle_archive_project(project_id):
     c.setopt(pycurl.POSTFIELDS,data)
     c.perform()
     c.close()
+    wf.logger.info('finished function toggle_archive_project')
+
+def toggle_delete_project(project_id):
+    wf.logger.info('started function toggle_delete_project')
+    #Update specific project in 10.000ft
+    import json
+    from lib import pycurl
+
+    #try?
+    api_key = wf.get_password('10k_api_key')
+
+    url = 'https://api.10000ft.com/api/v1/projects/' + str(project_id) + '?auth=' +str(api_key)
+    data = json.dumps({})
+    #wf.logger.debug('url: ' + str(url))
+    
+    #Do the request
+    c = pycurl.Curl()
+    c.setopt(c.URL, url) 
+    c.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json'])
+    c.setopt(pycurl.CUSTOMREQUEST, "DELETE")
+    c.setopt(pycurl.POSTFIELDS, data)
+    c.perform()
+    c.close()
+    wf.logger.info('finished function toggle_delete_project')
 
 def main(wf):   
     wf.logger.info('started main')
@@ -138,7 +178,8 @@ def main(wf):
     # If --toggle_archive_project is added as an argument, save its value to 'project_id' (dest)
     # This will be used toggle the archived status for the selected project
     parser.add_argument('--toggle_archive_project', dest='project_id', nargs='?', default=None)
-    
+    parser.add_argument('--toggle_delete_project', dest='project_id', nargs='?', default=None)
+
     # Add an optional query and save it to 'query'
     parser.add_argument('query', nargs='?', default=None)
     
@@ -184,7 +225,14 @@ def main(wf):
         #wf.logger.debug(args.project_id)
         toggle_archive_project(args.project_id)
         return 0  # 0 means script exited cleanly
+    if wf.args[0] == '--toggle_delete_project':
+        wf.logger.info('started  --toggle_delete_project')
+        #wf.logger.debug(args.project_id)
+        toggle_delete_project(args.project_id)
 
+        #TODO add call for updating data or delete from cache? http://alfredworkflow.readthedocs.io/en/latest/user-manual/persistent-data.html?highlight=cache#clearing-cached-data 
+
+        return 0  # 0 means script exited cleanly
 
     ####################################################################
     # Get data and filter 10.000ft projects
@@ -227,6 +275,7 @@ def main(wf):
     # If argument --options is passed on, show the options for manipulating a project.
     if wf.args[0] == '--options':
         # Get current project data
+        wf.logger.info('started building options menu')
         project = get_project_data(args.project_id)
         report_time = build_report_params(10, project).encode('utf-8')
         report_fees = build_report_params(8, project).encode('utf-8')
@@ -261,7 +310,13 @@ def main(wf):
                     valid=True,
                     icon='icons/project_archive.png'
                     )
-        """wf.add_item(title='Archive project',
+        wf.add_item(title='Delete project',
+            subtitle=project['name'],
+            arg='10000ft.py --toggle_delete_project ' + str(project['id']),
+            valid=True,
+            icon='icons/project_delete.png'
+            )
+        """wf.add_item(title='Unarchive project',
         subtitle=project['name'],
         arg='10000ft.py --toggle_archive_project ' + str(project['id']),
         valid=True,
@@ -273,30 +328,30 @@ def main(wf):
     ####################################################################
     # Show List of projects
     ####################################################################
+    else:
+        # Get the user tag from wf.settings
+        user_tag = wf.settings['user']
 
-    # Get the user tag from wf.settings
-    user_tag = wf.settings['user']
-
-    # Loop through the returned projects and add an item for each to the list of results for Alfred
-    for project in projects:
-        # Extract tags from data and put them in a list
-        taglist = build_taglist(project['tags']['data'])
-        # Only show projects of current user if the argument --user is passed on
-        # TODO: show errormessage if wf.settings['user'] is empty
-        if wf.args[0] == '--user':
-            # Check if the current user_tag is in the list of tags for this project.
-            if user_tag in taglist:
-                # Add the project to the list as an item
+        # Loop through the returned projects and add an item for each to the list of results for Alfred
+        for project in projects:
+            # Extract tags from data and put them in a list
+            taglist = build_taglist(project['tags']['data'])
+            # Only show projects of current user if the argument --user is passed on
+            # TODO: show errormessage if wf.settings['user'] is empty
+            if wf.args[0] == '--user':
+                # Check if the current user_tag is in the list of tags for this project.
+                if user_tag in taglist:
+                    # Add the project to the list as an item
+                    add_project(project)
+            else:
+                # Add the project to the list as an item           
                 add_project(project)
-        else:
-            # Add the project to the list as an item           
-            add_project(project)
-    # Send the results to Alfred as XML
-    wf.send_feedback()
-    return 0
+        # Send the results to Alfred as XML
+        wf.send_feedback()
+        return 0
 
 
-if __name__ == '__main__':
+if __name__ == u'__main__':
     wf = Workflow(help_url=HELP_URL,
                   update_settings=UPDATE_SETTINGS)
     log = wf.logger
