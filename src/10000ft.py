@@ -104,9 +104,15 @@ def build_report_params(view, project):
               ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
     params = urlencode(params)
-    #wf.logger.debug('PARAMS: https://app.10000ft.com/reports?' + params)
+    params = params.replace('+', '%20')
+
+    url = 'https://app.10000ft.com/reports?' + params
+
+    #if view is 10:
+        #wf.logger.debug('Standaard: ' + url)
+        #wf.logger.debug('Encoded: ' + url.encode('utf-8'))
     
-    return str('https://app.10000ft.com/reports?' + params)
+    return url
 
 
 def toggle_archive_project(project_id):
@@ -294,8 +300,11 @@ def main(wf):
         # Get current project data
         wf.logger.info('started building options menu')
         project = get_project_data(args.project_id)
+        
+        # Build report URLs
         report_time = build_report_params(10, project).encode('utf-8')
         report_fees = build_report_params(8, project).encode('utf-8')
+        
         # Add options for projects 
         wf.add_item(title='View project',
                     subtitle=project['name'],
