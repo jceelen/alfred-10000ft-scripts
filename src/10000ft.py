@@ -104,13 +104,16 @@ def build_report_params(view, project):
               ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
     params = urlencode(params)
+    
+    # Temporary fix to replace + with %20
+    # TODO: prevent that the + sign in a project or client name gets replaced
     params = params.replace('+', '%20')
 
     url = 'https://app.10000ft.com/reports?' + params
 
-    #if view is 10:
-        #wf.logger.debug('Standaard: ' + url)
-        #wf.logger.debug('Encoded: ' + url.encode('utf-8'))
+    # Output the time report URL for debug purposes
+    if view is 10:
+        wf.logger.debug('URL for debugging purposes: ' + url)
     
     return url
 
