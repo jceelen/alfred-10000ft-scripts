@@ -3,7 +3,6 @@
 
 from __future__ import unicode_literals
 
-#import subprocess
 from workflow import web, Workflow, PasswordNotFound
 
 def get_projects(api_key):

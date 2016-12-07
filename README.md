@@ -18,7 +18,7 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 ## Usage ##
 - `.10ksetkey` — saves your 10.000ft API key to the OSX Keychain
 - `.10ksetuser` — sets your 10.000ft User-tag-name (for feature in the future)
-- `.10kupdate` — forces update of your 10.000ft project data
+- `.10kupdate` — update of your 10.000ft project data (opens submenu with refresh or force)
 - `10k projects` — shows a list of active projects which you can filter
 
 ### Shortcuts ###
@@ -28,14 +28,17 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 ## Changelog
 
-#### Changelog 0.5
+#### v0.5
 - Updated Alfred-Workflow to 1.24 (from 1.17.3)
+- Added Force update data which dumps projects cache
 - Added My projects (based on tags)
 - Added Fees report for project
 - Added Archive project option in submenu
 - Added Delete project option in submenu
 - Fixed XML encoding error in log
-- Fixed Bug that caused Alfred to crash if the Client was null / None
+- Fixed Bug that caused Alfred to crash if the Project Client was null / None
+- Improved errorhandling
+- Improved updating data, it checks if an update is already running now
 - Improved Function for building report URLs
 - Improved Encoding / Decoding behaviour
 - Improved Flow & Descriptions in Alfred
