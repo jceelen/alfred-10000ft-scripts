@@ -6,32 +6,6 @@
 	<string>10000ft.scripts</string>
 	<key>connections</key>
 	<dict>
-		<key>03C71B74-6579-4FA8-8421-B17D6F15D23C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A9549725-D924-404E-BBE3-73AF805EF960</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>0D32094B-DDC9-482E-8B0D-FE86FF33E793</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>076F3B92-B58D-43DB-ACE0-FD0E879D2563</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
 		<array>
 			<dict>
@@ -47,50 +21,11 @@
 		</array>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<array/>
-		<key>235C073F-1A34-4719-9A9E-1019E21D516B</key>
+		<key>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8E9B5FAF-AA03-47DB-9CEE-BB5E5F4AE881</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3892E247-87A2-4C5C-8C4F-0571E507F40E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>4FDC66BD-3A9E-44F8-B73F-2CF29195259E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C3D78DC4-108F-4EE0-8CF0-2A0EB09D261A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>5DFC4680-A625-44D6-9828-D20EF4D5BFB7</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3668DFDF-7AFB-4D3F-B635-406C3854E6E9</string>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -103,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</string>
+				<string>D2D1D1CC-A86D-4A80-9C21-471086FEDDFF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -125,11 +60,47 @@
 				<false/>
 			</dict>
 		</array>
+		<key>841A7ED1-350F-4642-8FAA-F72A886D3153</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>70029311-2131-4A4B-A65D-B5685C90C431</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>89307B97-8D8C-4132-A89F-78CF55612216</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>5DFC4680-A625-44D6-9828-D20EF4D5BFB7</string>
+				<string>AF55124E-72BB-454A-BE96-AE8E1D24E135</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A025505B-7E59-4AF7-9640-00BA15BFF996</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -142,17 +113,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>70029311-2131-4A4B-A65D-B5685C90C431</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</string>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -161,11 +122,37 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C8211DD0-F1B8-4F8C-8275-BE116F4ED3FE</key>
+		<key>AF55124E-72BB-454A-BE96-AE8E1D24E135</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>03C71B74-6579-4FA8-8421-B17D6F15D23C</string>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D2D1D1CC-A86D-4A80-9C21-471086FEDDFF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -175,52 +162,6 @@
 			</dict>
 		</array>
 		<key>E8E7EE09-3366-43F7-8366-99BE31E47D89</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F6CA3413-CEB5-438C-8B4C-5E02332E3A8B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>3892E247-87A2-4C5C-8C4F-0571E507F40E</string>
-				<key>modifiers</key>
-				<integer>262144</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>F4A8D894-8A83-46CB-AD04-E04F85583E6F</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F4A8D894-8A83-46CB-AD04-E04F85583E6F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F6CA3413-CEB5-438C-8B4C-5E02332E3A8B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -237,29 +178,9 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F6CA3413-CEB5-438C-8B4C-5E02332E3A8B</string>
+				<string>A7CEF2B0-4A08-4310-A764-2F14138551C5</string>
 				<key>modifiers</key>
 				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>3892E247-87A2-4C5C-8C4F-0571E507F40E</string>
-				<key>modifiers</key>
-				<integer>262144</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>F4A8D894-8A83-46CB-AD04-E04F85583E6F</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
@@ -270,7 +191,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0D32094B-DDC9-482E-8B0D-FE86FF33E793</string>
+				<string>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -283,7 +204,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>902B9660-A2BE-44BE-943C-775B37DEC7E0</string>
+				<string>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -306,154 +227,67 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
 				<key>argumenttype</key>
 				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --options {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>A7CEF2B0-4A08-4310-A764-2F14138551C5</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
+				<key>fixedorder</key>
 				<false/>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
+				<key>items</key>
+				<string>[{"title":"Open 10.000ft Homepage"},{"title":"Open Planning in 10.000ft","arg":"plan"},{"title":"Open Analytics in 10.000ft","arg":"analytics"}]</string>
 				<key>keyword</key>
-				<string>10k projects</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
+				<string>10k</string>
 				<key>runningsubtext</key>
-				<string>Fetching data from 10.000ft...</string>
-				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --user "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search My Projects in 10.000ft</string>
-				<key>type</key>
-				<integer>0</integer>
+				<string></string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
-			<string>F8FEC87C-E131-44DD-9AD5-B101CBA0B6E7</string>
+			<string>6C9D7C6F-7234-4A32-9855-1926F52DE15C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>https://app.10000ft.com/{query}</string>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>D2D1D1CC-A86D-4A80-9C21-471086FEDDFF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>170D3560-1C2E-4307-8739-CC44EFD3E5CA</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<false/>
-				<key>matchmode</key>
-				<integer>2</integer>
-				<key>matchstring</key>
-				<string>(^(http))</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>70029311-2131-4A4B-A65D-B5685C90C431</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>F6CA3413-CEB5-438C-8B4C-5E02332E3A8B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>https://app.10000ft.com/viewproject?id={query}</string>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>3892E247-87A2-4C5C-8C4F-0571E507F40E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string>com.google.Chrome</string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -501,44 +335,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>https://app.10000ft.com/editproject?id={query}</string>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>F4A8D894-8A83-46CB-AD04-E04F85583E6F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>170D3560-1C2E-4307-8739-CC44EFD3E5CA</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string>{query}</string>
 				<key>matchcasesensitive</key>
@@ -558,73 +354,132 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"Open 10.000ft Homepage"},{"title":"Open Planning in 10.000ft","arg":"plan"},{"title":"Open Analytics in 10.000ft","arg":"analytics"}]</string>
-				<key>keyword</key>
-				<string>10k</string>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>/usr/bin/python 10000ft.py --options {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string></string>
+				<key>type</key>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>6C9D7C6F-7234-4A32-9855-1926F52DE15C</string>
+			<string>A7CEF2B0-4A08-4310-A764-2F14138551C5</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Your 10.000ft API key was saved</string>
-				<key>title</key>
-				<string>Saved API key</string>
-			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>076F3B92-B58D-43DB-ACE0-FD0E879D2563</string>
+			<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
+				<key>keyword</key>
+				<string>10k projects</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Fetching data from 10.000ft...</string>
 				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --setkey "{query}"</string>
+				<string>/usr/bin/python 10000ft.py --user "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search My Projects in 10.000ft</string>
 				<key>type</key>
 				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>0D32094B-DDC9-482E-8B0D-FE86FF33E793</string>
+			<string>F8FEC87C-E131-44DD-9AD5-B101CBA0B6E7</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>2</integer>
+				<key>matchstring</key>
+				<string>(^(http))</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>70029311-2131-4A4B-A65D-B5685C90C431</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -650,84 +505,15 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>open "https://app.10000ft.com/reports?view=10&amp;time=4&amp;start=2016-06-02&amp;end=2016-11-30&amp;firstgroup=phase_name&amp;secondgroup=user_name&amp;filters=[["Vlieg ver met KLM - 2016180"],[],["TCC"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]&amp;version=2&amp;title=Vlieg ver met KLM - 2016180"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>argument</key>
+				<string>10000ft.py --setkey {query}</string>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>8E9B5FAF-AA03-47DB-9CEE-BB5E5F4AE881</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>keyword</key>
-				<string>10k test script</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Test script for the 10.000 Scripts</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>235C073F-1A34-4719-9A9E-1019E21D516B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://app.10000ft.com/reports?view=10&amp;time=4&amp;start=2016-06-02&amp;end=2016-11-30&amp;firstgroup=phase_name&amp;secondgroup=user_name&amp;filters=[["Vlieg ver met KLM - 2016180"],[],["TCC"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]&amp;version=2&amp;title=Vlieg ver met KLM - 2016180</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>C3D78DC4-108F-4EE0-8CF0-2A0EB09D261A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>keyword</key>
-				<string>10k test action</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Test open URL for the 10.000 Scripts</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>4FDC66BD-3A9E-44F8-B73F-2CF29195259E</string>
+			<string>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -755,40 +541,15 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
+				<key>argument</key>
 				<string>http://10000ft.us6.list-manage2.com/subscribe?u=9c2ec42cba0e4196798807690&amp;id=be8afd4d34</string>
-				<key>utf8</key>
-				<true/>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>902B9660-A2BE-44BE-943C-775B37DEC7E0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Your 10.000ft User-tag-name was saved</string>
-				<key>title</key>
-				<string>Saved User-tag-name</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>3668DFDF-7AFB-4D3F-B635-406C3854E6E9</string>
+			<string>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -816,88 +577,42 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python 10000ft.py --setuser "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>argument</key>
+				<string>10000ft.py --setuser {query}</string>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>5DFC4680-A625-44D6-9828-D20EF4D5BFB7</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Fetching data from 10.000ft API</string>
-				<key>title</key>
-				<string>Update running</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>A9549725-D924-404E-BBE3-73AF805EF960</string>
+			<string>AF55124E-72BB-454A-BE96-AE8E1D24E135</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python update.py</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>03C71B74-6579-4FA8-8421-B17D6F15D23C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Refresh 10.000ft data","arg":"10000ft.py --update refresh","subtitle":"Hit ENTER to update the data from 10.000ft"},{"title":"Force refresh 10.000ft data","arg":"10000ft.py --update force","subtitle":"Hit ENTER to clear cache and update the data from 10.000ft"}]</string>
 				<key>keyword</key>
 				<string>.10kupdate</string>
+				<key>runningsubtext</key>
+				<string></string>
 				<key>subtext</key>
-				<string>Hit ENTER to Update the data from 10.000ft</string>
-				<key>text</key>
-				<string>Update 10.000ft Data</string>
+				<string>Run updater to (force) refresh data from 10.000ft</string>
+				<key>title</key>
+				<string>Update data from 10.000ft</string>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
-			<string>C8211DD0-F1B8-4F8C-8275-BE116F4ED3FE</string>
+			<string>A025505B-7E59-4AF7-9640-00BA15BFF996</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -906,201 +621,158 @@
 	<string>https://github.com/jceelen/alfred-10000ft-scripts</string>
 	<key>uidata</key>
 	<dict>
-		<key>03C71B74-6579-4FA8-8421-B17D6F15D23C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>240</integer>
-			<key>ypos</key>
-			<integer>910</integer>
-		</dict>
-		<key>076F3B92-B58D-43DB-ACE0-FD0E879D2563</key>
-		<dict>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>530</integer>
-		</dict>
-		<key>0D32094B-DDC9-482E-8B0D-FE86FF33E793</key>
-		<dict>
-			<key>xpos</key>
-			<integer>240</integer>
-			<key>ypos</key>
-			<integer>530</integer>
-		</dict>
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>note</key>
-			<string>if query starts with '10000ft.py --'</string>
+			<string>IF query starts with '10000ft.py --'</string>
 			<key>xpos</key>
-			<integer>820</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>390</integer>
+			<integer>190</integer>
 		</dict>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>note</key>
-			<string>Run project specific commands</string>
+			<string>Run 10000ft.py with input from submenu</string>
 			<key>xpos</key>
-			<integer>960</integer>
+			<integer>940</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>160</integer>
 		</dict>
-		<key>235C073F-1A34-4719-9A9E-1019E21D516B</key>
+		<key>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</key>
 		<dict>
-			<key>xpos</key>
-			<integer>790</integer>
-			<key>ypos</key>
-			<integer>540</integer>
-		</dict>
-		<key>3668DFDF-7AFB-4D3F-B635-406C3854E6E9</key>
-		<dict>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>790</integer>
-		</dict>
-		<key>3892E247-87A2-4C5C-8C4F-0571E507F40E</key>
-		<dict>
-			<key>note</key>
-			<string>view</string>
 			<key>xpos</key>
 			<integer>280</integer>
 			<key>ypos</key>
-			<integer>180</integer>
-		</dict>
-		<key>4FDC66BD-3A9E-44F8-B73F-2CF29195259E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>790</integer>
-			<key>ypos</key>
-			<integer>650</integer>
-		</dict>
-		<key>5DFC4680-A625-44D6-9828-D20EF4D5BFB7</key>
-		<dict>
-			<key>xpos</key>
-			<integer>240</integer>
-			<key>ypos</key>
-			<integer>790</integer>
+			<integer>640</integer>
 		</dict>
 		<key>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
 			<key>xpos</key>
-			<integer>960</integer>
+			<integer>940</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>310</integer>
 		</dict>
 		<key>6C9D7C6F-7234-4A32-9855-1926F52DE15C</key>
 		<dict>
+			<key>note</key>
+			<string>General 10.000ft Shortcuts</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>10</integer>
 		</dict>
 		<key>70029311-2131-4A4B-A65D-B5685C90C431</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
 			<key>note</key>
-			<string>if action contains an URL</string>
+			<string>IF query starts with http</string>
 			<key>xpos</key>
-			<integer>820</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>40</integer>
+			<integer>340</integer>
+		</dict>
+		<key>841A7ED1-350F-4642-8FAA-F72A886D3153</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>xpos</key>
+			<integer>550</integer>
+			<key>ypos</key>
+			<integer>260</integer>
 		</dict>
 		<key>89307B97-8D8C-4132-A89F-78CF55612216</key>
 		<dict>
+			<key>note</key>
+			<string>Set your 10.000ft User-tag-name</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>760</integer>
 		</dict>
-		<key>8E9B5FAF-AA03-47DB-9CEE-BB5E5F4AE881</key>
+		<key>A025505B-7E59-4AF7-9640-00BA15BFF996</key>
 		<dict>
+			<key>note</key>
+			<string>(Force) Refresh 10.000ft Data</string>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>20</integer>
 			<key>ypos</key>
-			<integer>540</integer>
-		</dict>
-		<key>902B9660-A2BE-44BE-943C-775B37DEC7E0</key>
-		<dict>
-			<key>xpos</key>
-			<integer>240</integer>
-			<key>ypos</key>
-			<integer>660</integer>
+			<integer>910</integer>
 		</dict>
 		<key>A7CEF2B0-4A08-4310-A764-2F14138551C5</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
 			<key>note</key>
 			<string>show submenu</string>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>240</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>230</integer>
 		</dict>
-		<key>A9549725-D924-404E-BBE3-73AF805EF960</key>
+		<key>AF55124E-72BB-454A-BE96-AE8E1D24E135</key>
 		<dict>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>910</integer>
-		</dict>
-		<key>C3D78DC4-108F-4EE0-8CF0-2A0EB09D261A</key>
-		<dict>
-			<key>xpos</key>
-			<integer>940</integer>
-			<key>ypos</key>
-			<integer>650</integer>
-		</dict>
-		<key>C8211DD0-F1B8-4F8C-8275-BE116F4ED3FE</key>
-		<dict>
-			<key>xpos</key>
-			<integer>20</integer>
-			<key>ypos</key>
-			<integer>910</integer>
-		</dict>
-		<key>E8E7EE09-3366-43F7-8366-99BE31E47D89</key>
-		<dict>
-			<key>xpos</key>
-			<integer>20</integer>
-			<key>ypos</key>
-			<integer>210</integer>
-		</dict>
-		<key>F4A8D894-8A83-46CB-AD04-E04F85583E6F</key>
-		<dict>
-			<key>note</key>
-			<string>edit</string>
 			<key>xpos</key>
 			<integer>280</integer>
 			<key>ypos</key>
-			<integer>280</integer>
+			<integer>790</integer>
 		</dict>
-		<key>F6CA3413-CEB5-438C-8B4C-5E02332E3A8B</key>
+		<key>D2D1D1CC-A86D-4A80-9C21-471086FEDDFF</key>
 		<dict>
-			<key>note</key>
-			<string>Set `project_id` variable</string>
 			<key>xpos</key>
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
-		<key>F8FEC87C-E131-44DD-9AD5-B101CBA0B6E7</key>
+		<key>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</key>
 		<dict>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>490</integer>
+		</dict>
+		<key>E8E7EE09-3366-43F7-8366-99BE31E47D89</key>
+		<dict>
+			<key>note</key>
+			<string>Search All Projects</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>160</integer>
+		</dict>
+		<key>F8FEC87C-E131-44DD-9AD5-B101CBA0B6E7</key>
+		<dict>
+			<key>note</key>
+			<string>Search My Projects</string>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>310</integer>
 		</dict>
 		<key>FF131D13-447A-462D-906C-C38B86A75544</key>
 		<dict>
+			<key>note</key>
+			<string>Set your 10.000ft API key</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>530</integer>
+			<integer>460</integer>
 		</dict>
 		<key>FF6008F2-59CC-4F28-B107-A3FA9E10D552</key>
 		<dict>
+			<key>note</key>
+			<string>Request an API key from 10.000ft website</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>660</integer>
+			<integer>610</integer>
 		</dict>
 	</dict>
 	<key>version</key>
