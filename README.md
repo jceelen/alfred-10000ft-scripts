@@ -23,7 +23,7 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 ### Shortcuts ###
 - `10k home` — open your 10000ft.com homepage
-- `10k schedule` — open the Schedule view
+- `10k planning` — open the Schedule view
 - `10k analytics` — open the Analytics view
 
 ## Changelog
