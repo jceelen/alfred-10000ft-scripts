@@ -1,5 +1,5 @@
 # 10.000ft Scripts - Workflow for Alfred #
-10.000ft workflow for Alfred, the aim is to make working with 10.000ft faster.
+10.000ft workflow for Alfred (only tested in Alfred3), the aim is to make working with 10.000ft faster.
 
 This script is a very simple first version and a research project and not really meant for distribution (yet) but just try it! And please, [give me feedback!](https://github.com/jceelen/alfred-10000ft-scripts/issues) :-). I am happy to help with questions.
 
@@ -27,6 +27,21 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 - `10k analytics` — open the Analytics view
 
 ## Changelog
+
+#### Changelog 0.5
+- Updated Alfred-Workflow to 1.24 (from 1.17.3)
+- Added My projects (based on tags)
+- Added Fees report for project
+- Added Archive project option in submenu
+- Added Delete project option in submenu
+- Fixed XML encoding error in log
+- Fixed Bug that caused Alfred to crash if the Client was null / None
+- Improved Function for building report URLs
+- Improved Encoding / Decoding behaviour
+- Improved Flow & Descriptions in Alfred
+- Improved Inline documentation
+- Refactored a lot of double code into functions
+
 #### v0.4
 - Added submenu with options for every project
 - Changed usage
@@ -40,5 +55,8 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 - Added automatic updates
 
 
-## Thanks ##
-This workflow uses the awesome [Alfred-Workflow](http://www.deanishe.net/alfred-workflow/) library [MIT-licensed](http://opensource.org/licenses/MIT).
+## Thanks, Copyright, Licensing ##
+- The awesome [Alfred-Workflow](http://www.deanishe.net/alfred-workflow/) library by [Deanishe](https://github.com/deanishe)
+- Icons are based on [Material design icons](https://github.com/google/material-design-icons) created and maintained by Google.
+
+All other code/media are released under the [MIT-licensed](http://opensource.org/licenses/MIT). 

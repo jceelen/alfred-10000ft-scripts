@@ -1,29 +1,15 @@
 #!/usr/bin/python
 # encoding: utf-8
 
-# About encoding: 
-# Best practice in Python programs is to use Unicode internally and decode all 
-# text input and encode all text output at IO boundaries (i.e. right where it 
-# enters/leaves your program). On OS X, UTF-8 is almost always the right encoding.
-
-# Because we want to work with Unicode, it's simpler if we make
-# literal strings in source code Unicode strings by default, so
-# we set `encoding: utf-8` at the very top of the script to tell Python
-# that this source file is UTF-8 and import `unicode_literals` before any
-# code.
-#
-# See Tip further down the page for more info
 from __future__ import unicode_literals
 
-import subprocess
+#import subprocess
 from workflow import web, Workflow, PasswordNotFound
-
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
     Returns a list of project dictionaries.
     """ 
-    
     import json
     from lib import pycurl    
     from StringIO import StringIO
@@ -31,7 +17,7 @@ def get_projects(api_key):
 
     buffer = StringIO()
 
-    #Set variables, TODO: From is not working?
+    #Set variables
     url = 'https://api.10000ft.com/api/v1/projects/'
     params = {'auth' : api_key,
               #'from' : '2016-01-01',

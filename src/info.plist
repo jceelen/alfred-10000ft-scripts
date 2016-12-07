@@ -46,18 +46,7 @@
 			</dict>
 		</array>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>70CA001F-B629-473A-ACBF-966275B4E70E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>235C073F-1A34-4719-9A9E-1019E21D516B</key>
 		<array>
 			<dict>
@@ -451,7 +440,7 @@
 			<key>config</key>
 			<dict>
 				<key>browser</key>
-				<string></string>
+				<string>com.google.Chrome</string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
@@ -521,27 +510,6 @@
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>F4A8D894-8A83-46CB-AD04-E04F85583E6F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Your Project is archived or un-archived in 10.000ft</string>
-				<key>title</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>70CA001F-B629-473A-ACBF-966275B4E70E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1036,13 +1004,6 @@
 			<integer>820</integer>
 			<key>ypos</key>
 			<integer>40</integer>
-		</dict>
-		<key>70CA001F-B629-473A-ACBF-966275B4E70E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>1180</integer>
-			<key>ypos</key>
-			<integer>360</integer>
 		</dict>
 		<key>89307B97-8D8C-4132-A89F-78CF55612216</key>
 		<dict>
