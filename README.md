@@ -9,9 +9,9 @@ In june 2016 I wrote the first versions of this script (up to 0.4). It was a ver
 - Saves your API key secure in the in the OSX Keychain
 - Gets realtime data (and saves it in cache) from 10.000ft using the API
 - Submenu with options for every project
--- Open the View and Edit page in browser
--- Time & Fees reports for projects
--- Archive or Delete projects directly from Alfred 
+--- Open the View and Edit page in browser
+--- Time & Fees reports for projects
+--- Archive or Delete projects directly from Alfred 
 - Filter for 'My projects' (based on tags)
 - Force update data which dumps projects cache
 
