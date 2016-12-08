@@ -18,6 +18,7 @@ ICON_UPDATE = 'icons/update_available.png'
 HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
 
 log = None
+anonymize = False
 
 def whatisthis(s, name):
     """For debugging it determines the type of a variable."""
@@ -50,6 +51,11 @@ def get_project_data(project_id):
 
 def add_project(project, taglist):
     """Add project as an item to show in Alfred."""
+    if anonymize:
+        import random
+        project['name'] = 'Anonimized Project ' + str(project['id'])[-3:]
+        project['client'] = 'Anonimized Client'
+
     wf.add_item(title=project['name'],
             subtitle= 'Client: ' + project['client'] + ' Hit ENTER to show menu, press ALT for more info.',
             modifier_subtitles={
