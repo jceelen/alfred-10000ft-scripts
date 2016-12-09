@@ -618,7 +618,11 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>https://github.com/jceelen/alfred-10000ft-scripts</string>
+	<string>10.000ft workflow for Alfred (only tested in Alfred3), the aim is to make working with 10.000ft faster.
+
+Quick start: Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
+
+Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 	<key>uidata</key>
 	<dict>
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
@@ -776,7 +780,7 @@
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.5</string>
+	<string>0.5.1</string>
 	<key>webaddress</key>
 	<string>www.jasperceelen.nl</string>
 </dict>
