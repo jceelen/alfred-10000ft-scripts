@@ -188,7 +188,7 @@ def update_project(project_id, action):
 def main(wf):   
     wf.logger.info('Started main')
     ####################################################################
-    # Run diagnostics
+    # Check for Update
     ####################################################################
     
     # Update available?
@@ -197,17 +197,6 @@ def main(wf):
                     'Press ENTER to install update',
                     autocomplete='workflow:update',
                     icon='update_available.png')
-    
-    # Is the API key stored in the Keychain?
-    try:
-        wf.get_password('10k_api_key')
-    except PasswordNotFound:  # API key has not yet been set
-        wf.add_item('No API key set.',
-                    'Please use .10ksetkey to set your 10.000ft API key.',
-                    valid=False,
-                    icon='icons/warning.png')
-        wf.send_feedback()
-        return 0
 
     ####################################################################
     # Get and Parse arguments
@@ -296,7 +285,18 @@ def main(wf):
     ####################################################################
     # Get data and filter 10.000ft projects
     ####################################################################
-
+    
+    # Is the API key stored in the Keychain?
+    try:
+        wf.get_password('10k_api_key')
+    except PasswordNotFound:  # API key has not yet been set
+        wf.add_item('No API key set.',
+                    'Please use .10ksetkey to set your 10.000ft API key.',
+                    valid=False,
+                    icon='icons/warning.png')
+        wf.send_feedback()
+        return 0
+    
     # Get query from Alfred
     query = args.query
 
