@@ -6,7 +6,7 @@ from __future__ import unicode_literals, print_function
 import sys
 import argparse
 from urllib import urlencode, quote
-from workflow import (Workflow, PasswordNotFound, )
+from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
 from workflow.notify import notify
 
@@ -104,6 +104,7 @@ def project_filter(filename):
     return 'projects' in filename
 
 def update_data(update_method):
+    """Update project data from 10.000ft"""
     if update_method == 'force':
         wf.logger.debug('Starting force update')
         from time import sleep
@@ -130,6 +131,7 @@ def update_project(project_id, action):
     from StringIO import StringIO
 
     buffer = StringIO()
+    project_deleted = None
 
     # Set access variables
     api_key = wf.get_password('10k_api_key')
@@ -157,11 +159,29 @@ def update_project(project_id, action):
     
     # Capture the response and store the json in a dictionary
     result = buffer.getvalue()
-    project = json.loads(result)
-    wf.logger.debug('Finished and processed request to 10.000ft, result: ' + str(project))
+    wf.logger.info('Request is finished. Result from 10.000ft: ' + str(result))
 
+    project = ''
+
+    try:
+        # Test if result is valid JSON
+        project = json.loads(result)
+    except ValueError, e:
+        # When the project is deleted, 10.000ft responds with an empty string (no JSON)
+        project_deleted = True
+ 
     # Finishing up based on response from 10.000ft
-    if 'id' in project:
+    if project_deleted is True:
+        # The project is deleted!
+        wf.logger.info('The project with id ' + project_id + ' is succesfully deleted from 10.000ft')
+        notify_title = 'Your project is deleted!'
+        notify_text = 'The project is succesfully deleted from 10.000ft'
+
+        update_data('force')
+
+    elif 'id' in project:
+        # If we get an object with a project ID this means that the project update of data was succesfull
+        wf.logger.debug('Processed result to project: ' + str(project))
         # If everything goes well 10.000ft returns all the updated project info
         notify_title = 'Your project is updated!'
         notify_text = status + project['name']
@@ -177,7 +197,7 @@ def update_project(project_id, action):
 
     else:
         notify_title = 'An error occured :-/)'
-        notify_text = 'Check the log files for mor information'
+        notify_text = 'Check the log files for more information'
 
     return notify(notify_title, notify_text)
 

@@ -39,6 +39,9 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 ## Changelog
 
+#### v0.5.2
+- Hotfix for bug deleting / archiving projects
+
 #### v0.5.1
 - Updated Alfred-Workflow to 1.24 (from 1.17.3)
 - Added Force update data which dumps projects cache
