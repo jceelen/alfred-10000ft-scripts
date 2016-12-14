@@ -6,6 +6,19 @@
 	<string>10000ft.scripts</string>
 	<key>connections</key>
 	<dict>
+		<key>0C6960B1-5D66-49EC-8CC1-2BBE74EE5302</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56AD879F-874C-4FD5-A55C-942FC0973538</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
 		<array>
 			<dict>
@@ -22,6 +35,19 @@
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<array/>
 		<key>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>56AD879F-874C-4FD5-A55C-942FC0973538</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -88,19 +114,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>AF55124E-72BB-454A-BE96-AE8E1D24E135</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A025505B-7E59-4AF7-9640-00BA15BFF996</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>841A7ED1-350F-4642-8FAA-F72A886D3153</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -593,34 +606,56 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"Refresh 10.000ft data","arg":"10000ft.py --update refresh","subtitle":"Hit ENTER to update the data from 10.000ft"},{"title":"Force refresh 10.000ft data","arg":"10000ft.py --update force","subtitle":"Hit ENTER to clear cache and update the data from 10.000ft"}]</string>
+				<integer>2</integer>
 				<key>keyword</key>
 				<string>.10kupdate</string>
-				<key>runningsubtext</key>
-				<string></string>
 				<key>subtext</key>
-				<string>Run updater to (force) refresh data from 10.000ft</string>
-				<key>title</key>
+				<string>Hit ENTER to get the latest data from 10.000ft</string>
+				<key>text</key>
 				<string>Update data from 10.000ft</string>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>A025505B-7E59-4AF7-9640-00BA15BFF996</string>
+			<string>0C6960B1-5D66-49EC-8CC1-2BBE74EE5302</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>10000ft.py --update force</string>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>56AD879F-874C-4FD5-A55C-942FC0973538</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>https://github.com/jceelen/alfred-10000ft-scripts</string>
+	<string>The aim is to make working with 10.000ft faster (only tested in Alfred3).
+
+Quick start: Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
+
+Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 	<key>uidata</key>
 	<dict>
+		<key>0C6960B1-5D66-49EC-8CC1-2BBE74EE5302</key>
+		<dict>
+			<key>note</key>
+			<string>Refresh 10.000ft Data</string>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>910</integer>
+		</dict>
 		<key>0DD079D2-D5A8-4323-B89A-49131DFE7B0A</key>
 		<dict>
 			<key>colorindex</key>
@@ -649,6 +684,13 @@
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>640</integer>
+		</dict>
+		<key>56AD879F-874C-4FD5-A55C-942FC0973538</key>
+		<dict>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>940</integer>
 		</dict>
 		<key>6B6625BA-C8D4-4D8D-BFFB-DCD69352C1B8</key>
 		<dict>
@@ -696,15 +738,6 @@
 			<integer>20</integer>
 			<key>ypos</key>
 			<integer>760</integer>
-		</dict>
-		<key>A025505B-7E59-4AF7-9640-00BA15BFF996</key>
-		<dict>
-			<key>note</key>
-			<string>(Force) Refresh 10.000ft Data</string>
-			<key>xpos</key>
-			<integer>20</integer>
-			<key>ypos</key>
-			<integer>910</integer>
 		</dict>
 		<key>A7CEF2B0-4A08-4310-A764-2F14138551C5</key>
 		<dict>
@@ -776,7 +809,7 @@
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.5</string>
+	<string>0.5.3</string>
 	<key>webaddress</key>
 	<string>www.jasperceelen.nl</string>
 </dict>

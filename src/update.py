@@ -73,7 +73,14 @@ def main(wf):
             """
             return get_projects(api_key)
 
-        projects = wf.cached_data('projects', wrapper, max_age=600)
+        # Check if the a force argument is parced and set the max_age
+        if wf.args[0] == '--force-update':
+            max_age = 1
+            wf.logger.debug('Forcing update of Packal workflows')
+        else:
+            max_age = 600
+        # Get the new data
+        projects = wf.cached_data('projects', wrapper, max_age=max_age)
         # Record our progress in the log file
         wf.logger.info('{} projects cached from 10.000ft'.format(len(projects)))
 

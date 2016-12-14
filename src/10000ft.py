@@ -6,7 +6,7 @@ from __future__ import unicode_literals, print_function
 import sys
 import argparse
 from urllib import urlencode, quote
-from workflow import (Workflow, PasswordNotFound, )
+from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
 from workflow.notify import notify
 
@@ -73,10 +73,16 @@ def build_taglist(tags):
         taglist.append(tag['value'].lower())    
     return taglist
 
-def build_report_params(view, project):
+def build_report_url(view, project):
     """Generate a string that contains the URL to a report."""
+    #from unicodedata import normalize
     from datetime import datetime
     now = datetime.now()
+    #whatisthis(project['name'], 'projectname')
+    
+    #project['name'] = normalize('NFC', project['name'])
+
+    #whatisthis(project['name'], 'projectname after encode')
     
     params = [('view', view), #8 = Fees, 10 = hours
               ('time', 4),
@@ -89,7 +95,7 @@ def build_report_params(view, project):
               ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
 
-    params = urlencode(params).encode('utf-8')
+    params = urlencode(params)
     # Temporary fix to replace + with %20
     params = params.replace('+', '%20')
     url = 'https://app.10000ft.com/reports?' + params
@@ -97,26 +103,22 @@ def build_report_params(view, project):
     #if view is 10:
         #wf.logger.debug('URL for debugging purposes: ' + url)
     
-    return url
+    return url.encode('utf-8')
 
 def project_filter(filename):
     """Filter needed for deleting projects cache."""
     return 'projects' in filename
 
 def update_data(update_method):
+    """Update project data from 10.000ft"""
+    #wf.logger.debug('Starting update')
+    cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
     if update_method == 'force':
-        wf.logger.debug('Starting force update')
-        from time import sleep
-        # Loop until update is finished to make sure that we do break a running update
-        while is_running('update'):
-            wf.logger.debug('Waiting current update to finish')
-            sleep(2) # be nice with the CPU
-            wf.logger.debug('Continuing force update')
-        # Clear projects cache
-        wf.clear_cache(project_filter)
+        #wf.logger.debug('Starting force update')
+        cmd.append('--force-update')
     
     # Update projects data
-    cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
+    #wf.logger.debug('Run update command : {}'.format(cmd))
     run_in_background('update', cmd)
 
     return 0
@@ -130,6 +132,7 @@ def update_project(project_id, action):
     from StringIO import StringIO
 
     buffer = StringIO()
+    project_deleted = None
 
     # Set access variables
     api_key = wf.get_password('10k_api_key')
@@ -157,11 +160,29 @@ def update_project(project_id, action):
     
     # Capture the response and store the json in a dictionary
     result = buffer.getvalue()
-    project = json.loads(result)
-    wf.logger.debug('Finished and processed request to 10.000ft, result: ' + str(project))
+    wf.logger.info('Request is finished. Result from 10.000ft: ' + str(result))
 
+    project = ''
+
+    try:
+        # Test if result is valid JSON
+        project = json.loads(result)
+    except ValueError, e:
+        # When the project is deleted, 10.000ft responds with an empty string (no JSON)
+        project_deleted = True
+ 
     # Finishing up based on response from 10.000ft
-    if 'id' in project:
+    if project_deleted is True:
+        # The project is deleted!
+        wf.logger.info('The project with id ' + project_id + ' is succesfully deleted from 10.000ft')
+        notify_title = 'Your project is deleted!'
+        notify_text = 'The project is succesfully deleted from 10.000ft'
+
+        update_data('force')
+
+    elif 'id' in project:
+        # If we get an object with a project ID this means that the project update of data was succesfull
+        wf.logger.debug('Processed result to project: ' + str(project))
         # If everything goes well 10.000ft returns all the updated project info
         notify_title = 'Your project is updated!'
         notify_text = status + project['name']
@@ -177,7 +198,7 @@ def update_project(project_id, action):
 
     else:
         notify_title = 'An error occured :-/)'
-        notify_text = 'Check the log files for mor information'
+        notify_text = 'Check the log files for more information'
 
     return notify(notify_title, notify_text)
 
@@ -188,26 +209,16 @@ def update_project(project_id, action):
 def main(wf):   
     wf.logger.info('Started main')
     ####################################################################
-    # Run diagnostics
+    # Check for Update
     ####################################################################
     
     # Update available?
+    #wf.logger.debug(wf.cached_data(__workflow_update_status))
     if wf.update_available:
         wf.add_item('A newer version is available',
                     'Press ENTER to install update',
                     autocomplete='workflow:update',
                     icon='update_available.png')
-    
-    # Is the API key stored in the Keychain?
-    try:
-        wf.get_password('10k_api_key')
-    except PasswordNotFound:  # API key has not yet been set
-        wf.add_item('No API key set.',
-                    'Please use .10ksetkey to set your 10.000ft API key.',
-                    valid=False,
-                    icon='icons/warning.png')
-        wf.send_feedback()
-        return 0
 
     ####################################################################
     # Get and Parse arguments
@@ -275,10 +286,7 @@ def main(wf):
 
         # Notify the user
         notify_title = 'Update running'
-        if update_method == 'force':
-            notify_text = 'Cache is cleared and data will be fetched from 10.000ft.'
-        else:
-            notify_text = 'Data will be fetched from 10.000ft.'
+        notify_text = 'Data will be fetched from 10.000ft.'
         return notify(notify_title, notify_text)
 
     # Update project: Archive
@@ -296,7 +304,18 @@ def main(wf):
     ####################################################################
     # Get data and filter 10.000ft projects
     ####################################################################
-
+    
+    # Is the API key stored in the Keychain?
+    try:
+        wf.get_password('10k_api_key')
+    except PasswordNotFound:  # API key has not yet been set
+        wf.add_item('No API key set.',
+                    'Please use .10ksetkey to set your 10.000ft API key.',
+                    valid=False,
+                    icon='icons/warning.png')
+        wf.send_feedback()
+        return 0
+    
     # Get query from Alfred
     query = args.query
 
@@ -336,10 +355,10 @@ def main(wf):
         # Get current project data
         wf.logger.info('Started building options menu')
         project = get_project_data(args.project_id)
-        
+
         # Build report URLs
-        report_time = build_report_params(10, project)
-        report_fees = build_report_params(8, project)
+        report_time = build_report_url(10, project)
+        report_fees = build_report_url(8, project)
     
         # Add options for projects 
         wf.add_item(title='View project',
