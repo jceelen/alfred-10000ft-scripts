@@ -41,6 +41,7 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 #### v0.5.3
 - Improved force update cache through Alfred and when archiving or deleting a project
+- Fixed encoding issue with urlencode
 
 #### v0.5.2
 - Hotfix for bug deleting / archiving projects

@@ -3,7 +3,7 @@
 
 from __future__ import unicode_literals
 
-from workflow import web, Workflow, PasswordNotFound
+from workflow import Workflow, PasswordNotFound
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
@@ -32,7 +32,7 @@ def get_projects(api_key):
               #'with_phases' : 'false',
               'per_page' : 10000,
               }
-    params = urlencode(params)                
+    params = urlencode(params, 'utf-8')                
 
     #Do the request
     c = pycurl.Curl()

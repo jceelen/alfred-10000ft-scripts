@@ -5,7 +5,7 @@ from __future__ import unicode_literals, print_function
 
 import sys
 import argparse
-from urllib import urlencode, quote
+from urllib import urlencode
 from workflow import (Workflow, PasswordNotFound)
 from workflow.background import run_in_background, is_running
 from workflow.notify import notify
@@ -75,14 +75,8 @@ def build_taglist(tags):
 
 def build_report_url(view, project):
     """Generate a string that contains the URL to a report."""
-    #from unicodedata import normalize
     from datetime import datetime
     now = datetime.now()
-    #whatisthis(project['name'], 'projectname')
-    
-    #project['name'] = normalize('NFC', project['name'])
-
-    #whatisthis(project['name'], 'projectname after encode')
     
     params = [('view', view), #8 = Fees, 10 = hours
               ('time', 4),
@@ -95,7 +89,7 @@ def build_report_url(view, project):
               ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
 
-    params = urlencode(params)
+    params = urlencode(params, 'utf-8')
     # Temporary fix to replace + with %20
     params = params.replace('+', '%20')
     url = 'https://app.10000ft.com/reports?' + params
@@ -103,7 +97,7 @@ def build_report_url(view, project):
     #if view is 10:
         #wf.logger.debug('URL for debugging purposes: ' + url)
     
-    return url.encode('utf-8')
+    return url
 
 def project_filter(filename):
     """Filter needed for deleting projects cache."""
