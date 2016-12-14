@@ -84,9 +84,11 @@ def build_report_url(view, project):
               ('end', project['ends_at']),
               ('firstgroup', 'phase_name'),
               ('secondgroup', 'user_name'),
+              #('filters', '[[],[],[],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
               ('filters', '[["' + project['name'] + '"],[],["' + project['client'] + '"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
               ('version', 2),
-              ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
+              ('title', project['name']) #original name
+              #('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
             ]
 
     params = urlencode(params, 'utf-8')
