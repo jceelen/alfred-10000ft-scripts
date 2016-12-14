@@ -92,6 +92,7 @@ def build_report_url(view, project):
             ]
 
     params = urlencode(params, 'utf-8')
+
     # Temporary fix to replace + with %20
     params = params.replace('+', '%20')
     url = 'https://app.10000ft.com/reports?' + params
