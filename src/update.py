@@ -3,7 +3,10 @@
 
 from __future__ import unicode_literals
 
+import argparse
 from workflow import Workflow, PasswordNotFound
+
+parser = None
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
@@ -74,7 +77,13 @@ def main(wf):
             return get_projects(api_key)
 
         # Check if the a force argument is parced and set the max_age
-        if wf.args[0] == '--force-update':
+        parser = argparse.ArgumentParser()
+        
+        # Update data
+        parser.add_argument('--force-update', dest='update_method', nargs='?', default=None)
+        
+        args = parser.parse_args(wf.args)
+        if args.update_method:
             max_age = 1
             wf.logger.debug('Forcing update of Packal workflows')
         else:

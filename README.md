@@ -24,9 +24,9 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 ## Usage ##
 - `.10ksetkey` — saves your 10.000ft API key to the OSX Keychain
+- `10k projects` or hotkey `cmd+'` - shows a list of active projects which you can filter
 - `.10ksetuser` — sets your 10.000ft User-tag-name (for feature in the future)
 - `.10kupdate` — update of your 10.000ft project data (opens submenu with refresh or force)
-- `10k projects` — shows a list of active projects which you can filter
 
 ### Shortcuts ###
 - `10k home` — open your 10000ft.com homepage
@@ -40,6 +40,7 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 ## Changelog
 
 #### v0.5.3
+- Added Hotkey
 - Improved force update cache through Alfred and when archiving or deleting a project
 - Fixed encoding issue with urlencode
 

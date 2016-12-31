@@ -20,6 +20,7 @@ HELP_URL = 'https://github.com/jceelen/alfred-10000ft-scripts/issues'
 log = None
 anonymize = False
 
+
 def whatisthis(s, name):
     """For debugging it determines the type of a variable."""
     if isinstance(s, str):
@@ -31,6 +32,7 @@ def whatisthis(s, name):
 
     return wf.logger.debug('your variable ' + name + ' is a: ' + result)
 
+
 def search_key_for_project(project):
     """Generate a string search key for a post."""
     elements = []
@@ -40,14 +42,16 @@ def search_key_for_project(project):
     elements.append(str(project['project_code']))
     return u' '.join(elements)
 
+
 def get_project_data(project_id):
     """Find the project matching the project_id."""
     projects = wf.cached_data('projects', None, max_age=0)
-        
+
     # Loop through projects and return project with a match
-    for project in projects:     
+    for project in projects:
         if int(project['id']) == int(project_id):
             return project
+
 
 def add_project(project, taglist):
     """Add project as an item to show in Alfred."""
@@ -57,39 +61,46 @@ def add_project(project, taglist):
         project['client'] = 'Anonimized Client'
 
     wf.add_item(title=project['name'],
-            subtitle= 'Client: ' + project['client'] + ' Hit ENTER to show menu, press ALT for more info.',
-            modifier_subtitles={
+                subtitle='Client: ' +
+                project['client'] +
+                ' Hit ENTER to show menu, press ALT for more info.',
+                modifier_subtitles={
                 'alt': 'Tags: ' + ', '.join(taglist),
-                },
-            arg=str(project['id']),
-            valid=True,
-            icon='icons/project_{0}.png'.format(project['project_state']).lower(),
-            copytext=project['name'])
+    },
+        arg=str(project['id']),
+        valid=True,
+        icon='icons/project_{0}.png'.format(
+                    project['project_state']).lower(),
+        copytext=project['name'])
+
 
 def build_taglist(tags):
     """Generate a list of tags."""
     taglist = []
     for tag in tags:
-        taglist.append(tag['value'].lower())    
+        taglist.append(tag['value'].lower())
     return taglist
+
 
 def build_report_url(view, project):
     """Generate a string that contains the URL to a report."""
     from datetime import datetime
     now = datetime.now()
-    
-    params = [('view', view), #8 = Fees, 10 = hours
+
+    # 8 = Fees, 10 = hours
+    params = [('view', view),
               ('time', 4),
               ('start', project['starts_at']),
               ('end', project['ends_at']),
               ('firstgroup', 'phase_name'),
               ('secondgroup', 'user_name'),
-              #('filters', '[[],[],[],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
-              ('filters', '[["' + project['name'] + '"],[],["' + project['client'] + '"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
+              # ('filters', '[[],[],[],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
+              ('filters', '[["' + project['name'] + '"],[],["' + project['client'] + \
+               '"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
               ('version', 2),
-              ('title', project['name']) #original name
-              #('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
-            ]
+              ('title', project['name'])
+              # ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
+              ]
 
     params = urlencode(params, 'utf-8')
 
@@ -97,33 +108,36 @@ def build_report_url(view, project):
     params = params.replace('+', '%20')
     url = 'https://app.10000ft.com/reports?' + params
     # Output the time report URL for debug purposes
-    #if view is 10:
-        #wf.logger.debug('URL for debugging purposes: ' + url)
-    
+    # if view is 10:
+    # wf.logger.debug('URL for debugging purposes: ' + url)
+
     return url
+
 
 def project_filter(filename):
     """Filter needed for deleting projects cache."""
     return 'projects' in filename
 
+
 def update_data(update_method):
     """Update project data from 10.000ft"""
-    #wf.logger.debug('Starting update')
+    # wf.logger.debug('Starting update')
     cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
     if update_method == 'force':
-        #wf.logger.debug('Starting force update')
+        # wf.logger.debug('Starting force update')
         cmd.append('--force-update')
-    
+
     # Update projects data
-    #wf.logger.debug('Run update command : {}'.format(cmd))
+    # wf.logger.debug('Run update command : {}'.format(cmd))
     run_in_background('update', cmd)
 
     return 0
 
+
 def update_project(project_id, action):
     """Update specific project in 10.000ft."""
     wf.logger.info('Started updating project')
-    
+
     import json
     from lib import pycurl
     from StringIO import StringIO
@@ -133,11 +147,12 @@ def update_project(project_id, action):
 
     # Set access variables
     api_key = wf.get_password('10k_api_key')
-    url = 'https://api.10000ft.com/api/v1/projects/' + str(project_id) + '?auth=' +str(api_key)  
+    url = 'https://api.10000ft.com/api/v1/projects/' + \
+        str(project_id) + '?auth=' + str(api_key)
 
     # Determine other variables based on the action
     if action == 'archive_project':
-        data = json.dumps({"id" : project_id, "archived" : "true"})
+        data = json.dumps({"id": project_id, "archived": "true"})
         request_method = "PUT"
         status = 'Archived: '
     if action == 'delete_project':
@@ -147,14 +162,14 @@ def update_project(project_id, action):
 
     # Do the request
     c = pycurl.Curl()
-    c.setopt(c.URL, url) 
+    c.setopt(c.URL, url)
     c.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json'])
     c.setopt(pycurl.CUSTOMREQUEST, request_method)
-    c.setopt(pycurl.POSTFIELDS,data)
+    c.setopt(pycurl.POSTFIELDS, data)
     c.setopt(c.WRITEDATA, buffer)
     c.perform()
     c.close()
-    
+
     # Capture the response and store the json in a dictionary
     result = buffer.getvalue()
     wf.logger.info('Request is finished. Result from 10.000ft: ' + str(result))
@@ -165,25 +180,28 @@ def update_project(project_id, action):
         # Test if result is valid JSON
         project = json.loads(result)
     except ValueError, e:
-        # When the project is deleted, 10.000ft responds with an empty string (no JSON)
+        # When the project is deleted, 10.000ft responds with an empty string
+        # (no JSON)
         project_deleted = True
- 
+
     # Finishing up based on response from 10.000ft
     if project_deleted is True:
         # The project is deleted!
-        wf.logger.info('The project with id ' + project_id + ' is succesfully deleted from 10.000ft')
+        wf.logger.info('The project with id ' + project_id +
+                       ' is succesfully deleted from 10.000ft')
         notify_title = 'Your project is deleted!'
         notify_text = 'The project is succesfully deleted from 10.000ft'
 
         update_data('force')
 
     elif 'id' in project:
-        # If we get an object with a project ID this means that the project update of data was succesfull
+        # If we get an object with a project ID this means that the project
+        # update of data was succesfull
         wf.logger.debug('Processed result to project: ' + str(project))
         # If everything goes well 10.000ft returns all the updated project info
         notify_title = 'Your project is updated!'
         notify_text = status + project['name']
-        
+
         # Initiate force update
         update_data('force')
 
@@ -191,7 +209,8 @@ def update_project(project_id, action):
         # 10.000ft returns a message if something went wrong
         notify_title = 'Something went wrong :-/'
         notify_text = project['message']
-        wf.logger.info('Something went wrong :-/. Message from 10.000ft: ' + str(project['message']))
+        wf.logger.info(
+            'Something went wrong :-/. Message from 10.000ft: ' + str(project['message']))
 
     else:
         notify_title = 'An error occured :-/)'
@@ -203,14 +222,15 @@ def update_project(project_id, action):
 # Alfred Workflow Main
 ####################################################################
 
-def main(wf):   
+
+def main(wf):
     wf.logger.info('Started main')
     ####################################################################
     # Check for Update
     ####################################################################
-    
+
     # Update available?
-    #wf.logger.debug(wf.cached_data(__workflow_update_status))
+    # wf.logger.debug(wf.cached_data(__workflow_update_status))
     if wf.update_available:
         wf.add_item('A newer version is available',
                     'Press ENTER to install update',
@@ -227,26 +247,29 @@ def main(wf):
     # Keyword actions:
     # Save the API key
     parser.add_argument('--setkey', dest='apikey', nargs='?', default=None)
-    # Save the tag for this user 
+    # Save the tag for this user
     parser.add_argument('--setuser', dest='user', nargs='?', default=None)
     # Update data
-    parser.add_argument('--update', dest='update_method', nargs='?', default=None)
+    parser.add_argument('--update', dest='update_method',
+                        nargs='?', default=None)
     # Show only projects for a specific tag
     parser.add_argument('--user', dest='user_tag', nargs='?', default=None)
 
     # Show the list of options for the selected project
-    parser.add_argument('--options', dest='project_id', nargs='?', default=None)
-    
+    parser.add_argument('--options', dest='project_id',
+                        nargs='?', default=None)
+
     # Submenu options, project_id is stored in args.project_id
-    parser.add_argument('--archive_project', dest='project_id', nargs='?', default=None)
-    parser.add_argument('--delete_project', dest='project_id', nargs='?', default=None)
+    parser.add_argument('--archive_project',
+                        dest='project_id', nargs='?', default=None)
+    parser.add_argument('--delete_project',
+                        dest='project_id', nargs='?', default=None)
 
     # Add an optional query and save it to 'query'
     parser.add_argument('query', nargs='?', default=None)
-    
+
     # Parse the script's arguments
     args = parser.parse_args(wf.args)
-
 
     ####################################################################
     # Run argument-specific actions
@@ -263,12 +286,12 @@ def main(wf):
 
         return notify(notify_title, notify_text)
 
-    # Save the tag for this user    
+    # Save the tag for this user
     if args.user:  # Script was passed a username
         # save the user
         wf.settings['user'] = args.user.lower()
         wf.logger.debug('WF settings: ' + str(wf.settings))
-        
+
         # Notify the user
         notify_title = 'Saved User-tag-name'
         notify_text = 'Your 10.000ft User-tag-name was saved'
@@ -288,20 +311,20 @@ def main(wf):
 
     # Update project: Archive
     if wf.args[0] == '--archive_project':
-    # Archive project if --archive_project
+        # Archive project if --archive_project
         update_project(args.project_id, 'archive_project')
         return 0
-    
+
     # Update project: Delete
     if wf.args[0] == '--delete_project':
-    # Delete project if --delete_project
+        # Delete project if --delete_project
         update_project(args.project_id, 'delete_project')
         return 0
 
     ####################################################################
     # Get data and filter 10.000ft projects
     ####################################################################
-    
+
     # Is the API key stored in the Keychain?
     try:
         wf.get_password('10k_api_key')
@@ -312,7 +335,7 @@ def main(wf):
                     icon='icons/warning.png')
         wf.send_feedback()
         return 0
-    
+
     # Get query from Alfred
     query = args.query
 
@@ -330,25 +353,26 @@ def main(wf):
         wf.add_item('Fetching data from 10.000ft...',
                     valid=False,
                     icon='icons/fetching_data.png')
-    
+
     # If script was passed a query, use it to filter projects
     if query and projects:
-        projects = wf.filter(query, projects, key=search_key_for_project, min_score=20)
+        projects = wf.filter(
+            query, projects, key=search_key_for_project, min_score=20)
 
     # If we have no data to show, so show a warning and stop
-    if not projects:  
+    if not projects:
         wf.add_item('No projects found', icon='icons/warning.png')
         wf.send_feedback()
         return 0
-
 
     ####################################################################
     # Show submenu options for project
     ####################################################################
 
-    # If argument --options is passed on, show the options for manipulating a project.
+    # If argument --options is passed on, show the options for manipulating a
+    # project.
     if wf.args[0] == '--options':
-        
+
         # Get current project data
         wf.logger.info('Started building options menu')
         project = get_project_data(args.project_id)
@@ -356,15 +380,17 @@ def main(wf):
         # Build report URLs
         report_time = build_report_url(10, project)
         report_fees = build_report_url(8, project)
-    
-        # Add options for projects 
+
+        # Add options for projects
         wf.add_item(title='View project',
-                    arg='https://app.10000ft.com/viewproject?id=' + str(project['id']),
+                    arg='https://app.10000ft.com/viewproject?id=' +
+                        str(project['id']),
                     valid=True,
                     icon='icons/project_view.png'
                     )
         wf.add_item(title='Edit project',
-                    arg='https://app.10000ft.com/editproject?id=' + str(project['id']),
+                    arg='https://app.10000ft.com/editproject?id=' +
+                        str(project['id']),
                     valid=True,
                     icon='icons/project_edit.png'
                     )
@@ -391,28 +417,30 @@ def main(wf):
         # Send the results to Alfred as XML
         wf.send_feedback()
 
-
     ####################################################################
     # Show List of projects
     ####################################################################
-    
+
     else:
-        # Loop through the returned projects and add an item for each to the list of results for Alfred
+        # Loop through the returned projects and add an item for each to the
+        # list of results for Alfred
         for project in projects:
             # Extract tags from data and put them in a list
             taglist = build_taglist(project['tags']['data'])
-            
+
             if wf.args[0] == '--user':
-            # Only show projects of current user if the argument --user is passed on
+                # Only show projects of current user if the argument --user is
+                # passed on
                 if 'user' in wf.settings:
                     # Get the user tag from wf.settings
                     user_tag = wf.settings['user']
-                    # Check if the current user_tag is in the list of tags for this project.
+                    # Check if the current user_tag is in the list of tags for
+                    # this project.
                     if user_tag in taglist:
                         # Add the project to the list as an item
-                        add_project(project, taglist)                    
+                        add_project(project, taglist)
                 else:
-                # Show an error if the 'user' key is not in wf.settings
+                    # Show an error if the 'user' key is not in wf.settings
                     wf.add_item('No User-tag-name saved.',
                                 'Please use .10ksetuser to set your 10.000ft User-tag-name.',
                                 valid=False,
@@ -420,7 +448,8 @@ def main(wf):
                     wf.send_feedback()
                     return 0
             else:
-            # In all other situations, just show the list of all the projects
+                # In all other situations, just show the list of all the
+                # projects
                 add_project(project, taglist)
         # Send the results to Alfred as XML
         wf.send_feedback()

@@ -32,6 +32,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>16C22471-CD29-4989-857D-BD7687AC7EA8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E8E7EE09-3366-43F7-8366-99BE31E47D89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<array/>
 		<key>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</key>
@@ -299,6 +312,37 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>170D3560-1C2E-4307-8739-CC44EFD3E5CA</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>39</integer>
+				<key>hotmod</key>
+				<integer>1048576</integer>
+				<key>hotstring</key>
+				<string>'</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>16C22471-CD29-4989-857D-BD7687AC7EA8</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -652,7 +696,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Refresh 10.000ft Data</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>910</integer>
 		</dict>
@@ -663,9 +707,16 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>IF query starts with '10000ft.py --'</string>
 			<key>xpos</key>
-			<integer>760</integer>
+			<integer>960</integer>
 			<key>ypos</key>
 			<integer>190</integer>
+		</dict>
+		<key>16C22471-CD29-4989-857D-BD7687AC7EA8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>160</integer>
 		</dict>
 		<key>170D3560-1C2E-4307-8739-CC44EFD3E5CA</key>
 		<dict>
@@ -674,21 +725,21 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Run 10000ft.py with input from submenu</string>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>1140</integer>
 			<key>ypos</key>
 			<integer>160</integer>
 		</dict>
 		<key>4CDCF0B6-4A8C-4E1E-8533-39CCAC6913BE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>640</integer>
 		</dict>
 		<key>56AD879F-874C-4FD5-A55C-942FC0973538</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>940</integer>
 		</dict>
@@ -697,7 +748,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>1140</integer>
 			<key>ypos</key>
 			<integer>310</integer>
 		</dict>
@@ -706,7 +757,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>General 10.000ft Shortcuts</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
@@ -717,7 +768,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>IF query starts with http</string>
 			<key>xpos</key>
-			<integer>760</integer>
+			<integer>960</integer>
 			<key>ypos</key>
 			<integer>340</integer>
 		</dict>
@@ -726,7 +777,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>750</integer>
 			<key>ypos</key>
 			<integer>260</integer>
 		</dict>
@@ -735,7 +786,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Set your 10.000ft User-tag-name</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>760</integer>
 		</dict>
@@ -746,28 +797,28 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>show submenu</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>440</integer>
 			<key>ypos</key>
 			<integer>230</integer>
 		</dict>
 		<key>AF55124E-72BB-454A-BE96-AE8E1D24E135</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>790</integer>
 		</dict>
 		<key>D2D1D1CC-A86D-4A80-9C21-471086FEDDFF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
 		<key>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>490</integer>
 		</dict>
@@ -776,7 +827,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Search All Projects</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>160</integer>
 		</dict>
@@ -785,7 +836,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Search My Projects</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>310</integer>
 		</dict>
@@ -794,7 +845,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Set your 10.000ft API key</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>460</integer>
 		</dict>
@@ -803,7 +854,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<key>note</key>
 			<string>Request an API key from 10.000ft website</string>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>610</integer>
 		</dict>
