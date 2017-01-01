@@ -21,18 +21,6 @@ log = None
 anonymize = False
 
 
-def whatisthis(s, name):
-    """For debugging it determines the type of a variable."""
-    if isinstance(s, str):
-        result = 'ordinary string'
-    elif isinstance(s, unicode):
-        result = 'unicode string'
-    else:
-        result = 'not a string but a: ' + str(type(s))
-
-    return wf.logger.debug('your variable ' + name + ' is a: ' + result)
-
-
 def search_key_for_project(project):
     """Generate a string search key for a post."""
     elements = []
@@ -122,14 +110,13 @@ def project_filter(filename):
 
 def update_data(update_method):
     """Update project data from 10.000ft"""
-    # wf.logger.debug('Starting update')
+    wf.logger.debug('Starting update')
     cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
     if update_method == 'force':
-        # wf.logger.debug('Starting force update')
         cmd.append('--force-update')
 
     # Update projects data
-    # wf.logger.debug('Run update command : {}'.format(cmd))
+    wf.logger.debug('Run update command : {}'.format(cmd))
     run_in_background('update', cmd)
 
     return 0

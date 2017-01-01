@@ -64,6 +64,32 @@ def get_projects(api_key):
 
 
 def main(wf):
+    ####################################################################
+    # Get and Parse arguments
+    ####################################################################
+
+    # Build argument parser to parse script args and collect their values
+    parser = argparse.ArgumentParser()
+
+    # Check if the a force argument is parced and set the max_age
+    parser.add_argument(
+        '--force-update', dest='update_method', nargs='?', default=None)
+
+    args = parser.parse_args(wf.args)
+
+    ####################################################################
+    # Run argument-specific actions
+    ####################################################################
+
+    if wf.args[0] == '--force-update':
+        max_age = 1
+    else:
+        max_age = 600
+
+    ####################################################################
+    # Get data the data from 10.000ft
+    ####################################################################
+
     try:
         # Get API key from Keychain
         api_key = wf.get_password('10k_api_key')
@@ -78,24 +104,11 @@ def main(wf):
             """
             return get_projects(api_key)
 
-        # Check if the a force argument is parced and set the max_age
-        parser = argparse.ArgumentParser()
-
-        # Update data
-        parser.add_argument(
-            '--force-update', dest='update_method', nargs='?', default=None)
-
-        args = parser.parse_args(wf.args)
-        if args.update_method:
-            max_age = 1
-            wf.logger.debug('Forcing update of Packal workflows')
-        else:
-            max_age = 600
         # Get the new data
         projects = wf.cached_data('projects', wrapper, max_age=max_age)
         # Record our progress in the log file
-        wf.logger.info('{} projects cached from 10.000ft'.format(
-            len(projects)))
+        wf.logger.info('{} projects cached, max_age {} second(s)'.format(
+            len(projects), max_age))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it
