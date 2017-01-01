@@ -8,58 +8,60 @@ from workflow import Workflow, PasswordNotFound
 
 parser = None
 
+
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
     Returns a list of project dictionaries.
-    """ 
+    """
     import json
-    from lib import pycurl    
+    from lib import pycurl
     from StringIO import StringIO
     from urllib import urlencode
 
     buffer = StringIO()
 
-    #Set variables
+    # Set variables
     url = 'https://api.10000ft.com/api/v1/projects/'
-    params = {'auth' : api_key,
-              #'from' : '2016-01-01',
-              #'to' : '',
-              'fields' : 'tags, budget_items, project_state, phase_count',
-              #'filter_field' : 'project_state',    #The property to filter on
-              #'filter_list' : '',  #Options: Internal, Tentative, Confirmed
-              'sort_field' : 'updated',
-              'sort_order' : 'descending',
-              #'project_code' : '',
-              #'phase_name' : '',
-              #'with_archived' : 'false',
-              #'with_phases' : 'false',
-              'per_page' : 10000,
+    params = {'auth': api_key,
+              # 'from' : '2016-01-01',
+              # 'to' : '',
+              'fields': 'tags, budget_items, project_state, phase_count',
+              # 'filter_field' : 'project_state',    #The property to filter on
+              # 'filter_list' : '',  #Options: Internal, Tentative, Confirmed
+              'sort_field': 'updated',
+              'sort_order': 'descending',
+              # 'project_code' : '',
+              # 'phase_name' : '',
+              # 'with_archived' : 'false',
+              # 'with_phases' : 'false',
+              'per_page': 10000,
               }
-    params = urlencode(params, 'utf-8')                
+    params = urlencode(params, 'utf-8')
 
-    #Do the request
+    # Do the request
     c = pycurl.Curl()
-    c.setopt(c.URL, url + '?' + params) 
+    c.setopt(c.URL, url + '?' + params)
     c.setopt(c.WRITEDATA, buffer)
     c.perform()
     c.close()
-    
+
     # Parse the JSON returned by 10.000ft and extract the projects
     result = buffer.getvalue()
     result = json.loads(result)
-    
+
     # Store the result in a projects library
     projects = result['data']
 
-    # Cycle through projects to modify data if necessary 
+    # Cycle through projects to modify data if necessary
     for project in projects:
-      # If the value of client is None this can cause problems, let's find them
-      if project['client'] is None:
-        # replace none values with an empty string
-        project['client'] = ''
+        # If the value of client is None this causes problems, let's find them
+        if project['client'] is None:
+            # replace none values with an empty string
+            project['client'] = ''
 
     # Return projects as a library with updated data
     return projects
+
 
 def main(wf):
     try:
@@ -78,10 +80,11 @@ def main(wf):
 
         # Check if the a force argument is parced and set the max_age
         parser = argparse.ArgumentParser()
-        
+
         # Update data
-        parser.add_argument('--force-update', dest='update_method', nargs='?', default=None)
-        
+        parser.add_argument(
+            '--force-update', dest='update_method', nargs='?', default=None)
+
         args = parser.parse_args(wf.args)
         if args.update_method:
             max_age = 1
@@ -91,7 +94,8 @@ def main(wf):
         # Get the new data
         projects = wf.cached_data('projects', wrapper, max_age=max_age)
         # Record our progress in the log file
-        wf.logger.info('{} projects cached from 10.000ft'.format(len(projects)))
+        wf.logger.info('{} projects cached from 10.000ft'.format(
+            len(projects)))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it

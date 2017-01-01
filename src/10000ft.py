@@ -94,12 +94,13 @@ def build_report_url(view, project):
               ('end', project['ends_at']),
               ('firstgroup', 'phase_name'),
               ('secondgroup', 'user_name'),
-              # ('filters', '[[],[],[],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
-              ('filters', '[["' + project['name'] + '"],[],["' + project['client'] + \
-               '"],[],[],[],[],["Confirmed","Future"],[],[],[],[],[],[]]'),
+              (('filters', '[["' + project['name'] + '"],[],["' +
+                project['client'] + '"],[],[],[],[],["Confirmed","Future"]' +
+                ',[],[],[],[],[],[]]')
+               ),
               ('version', 2),
-              ('title', project['name'])
-              # ('title', 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year))
+              (('title', 'Report: ' + project['name'] +
+                ' - %s-%s-%s' % (now.day, now.month, now.year)))
               ]
 
     params = urlencode(params, 'utf-8')
@@ -210,7 +211,8 @@ def update_project(project_id, action):
         notify_title = 'Something went wrong :-/'
         notify_text = project['message']
         wf.logger.info(
-            'Something went wrong :-/. Message from 10.000ft: ' + str(project['message']))
+            'Something went wrong :-/.'
+            ' Message from 10.000ft: ' + str(project['message']))
 
     else:
         notify_title = 'An error occured :-/)'
@@ -442,7 +444,8 @@ def main(wf):
                 else:
                     # Show an error if the 'user' key is not in wf.settings
                     wf.add_item('No User-tag-name saved.',
-                                'Please use .10ksetuser to set your 10.000ft User-tag-name.',
+                                ('Please use .10ksetuser to set '
+                                 'your 10.000ft User-tag-name.'),
                                 valid=False,
                                 icon='icons/warning.png')
                     wf.send_feedback()
