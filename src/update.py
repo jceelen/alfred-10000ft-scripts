@@ -6,8 +6,6 @@ from __future__ import unicode_literals
 import argparse
 from workflow import Workflow, PasswordNotFound
 
-parser = None
-
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
@@ -72,16 +70,18 @@ def main(wf):
     parser = argparse.ArgumentParser()
 
     # Check if the a force argument is parced and set the max_age
-    parser.add_argument(
-        '--force-update', dest='update_method', nargs='?', default=None)
+    parser.add_argument('--update', dest='update_method',
+                        nargs='?', default='normal')
 
     args = parser.parse_args(wf.args)
+
+    wf.logger.info('update_method = ' + args.update_method)
 
     ####################################################################
     # Run argument-specific actions
     ####################################################################
 
-    if wf.args[0] == '--force-update':
+    if args.update_method == 'force':
         max_age = 1
     else:
         max_age = 600

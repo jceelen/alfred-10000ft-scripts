@@ -113,7 +113,8 @@ def update_data(update_method):
     wf.logger.debug('Starting update')
     cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
     if update_method == 'force':
-        cmd.append('--force-update')
+        cmd.append('--update')
+        cmd.append('force')
 
     # Update projects data
     wf.logger.debug('Run update command : {}'.format(cmd))
@@ -240,7 +241,7 @@ def main(wf):
     parser.add_argument('--setuser', dest='user', nargs='?', default=None)
     # Update data
     parser.add_argument('--update', dest='update_method',
-                        nargs='?', default=None)
+                        nargs='?', default='normal')
     # Show only projects for a specific tag
     parser.add_argument('--user', dest='user_tag', nargs='?', default=None)
 
