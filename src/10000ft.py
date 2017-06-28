@@ -41,6 +41,18 @@ def get_project_data(project_id):
             return project
 
 
+def get_client_data(client_name):
+    """Find the client matching the client_name."""
+    wf.logger.debug('starting get_client_data')
+    clients = wf.cached_data('clients', None, max_age=0)
+
+    # Loop through clients and return client with a match
+    for client in clients:
+        if client['name'] == client_name:
+            wf.logger.debug('get_client_id finished, client_data: ' + str(client))
+            return client
+
+
 def add_project(project, taglist):
     """Add project as an item to show in Alfred."""
     if anonymize:
@@ -74,31 +86,10 @@ def build_report_url(view, project):
     """Generate a string that contains the URL to a report."""
     from datetime import datetime
     now = datetime.now()
+    report_title = 'Report: ' + project['name'] + ' - %s-%s-%s' % (now.day, now.month, now.year)
+    client_id = get_client_data(project['client'])
 
-    # 8 = Fees, 10 = hours
-    params = [('view', view),
-              ('time', 4),
-              ('start', project['starts_at']),
-              ('end', project['ends_at']),
-              ('firstgroup', 'phase_name'),
-              ('secondgroup', 'user_name'),
-              (('filters', '[["' + project['name'] + '"],[],["' +
-                project['client'] + '"],[],[],[],[],["Confirmed","Future"]' +
-                ',[],[],[],[],[],[]]')
-               ),
-              ('version', 2),
-              (('title', 'Report: ' + project['name'] +
-                ' - %s-%s-%s' % (now.day, now.month, now.year)))
-              ]
-
-    params = urlencode(params, 'utf-8')
-
-    # Temporary fix to replace + with %20
-    params = params.replace('+', '%20')
-    url = 'https://app.10000ft.com/reports?' + params
-    # Output the time report URL for debug purposes
-    # if view is 10:
-    # wf.logger.debug('URL for debugging purposes: ' + url)
+    url = 'https://app.10000ft.com/report?filters=%7B%221%22%3A%22' + str(view) + '%22%2C%222%22%3A%2242%22%2C%2260%22%3A%7B%22mode%22%3A%22include%22%2C%22options%22%3A%5B%22project-' + str(project['id']) + '%22%5D%7D%2C%2280%22%3A%7B%22mode%22%3A%22include%22%2C%22options%22%3A%5B%22tag-' + str(client_id) + '%22%5D%7D%2C%22firstGroupBy%22%3A%22firstGroupByPhaseName%22%2C%22thenGroupBy%22%3A%22thenGroupByResource%22%2C%22customDateStart%22%3A%22' + str(project['starts_at']) + '%22%2C%22customDateEnd%22%3A%22' + str(project['ends_at']) + '%22%2C%22entryType%22%3A%7B%22mode%22%3A%22include%22%2C%22options%22%3A%5B%22entryTypeConfirmed%22%2C%22entryTypeFuture%22%5D%7D%7D&version=3'
 
     return url
 
@@ -333,9 +324,13 @@ def main(wf):
     # update the cache in this script and `max_age` to 0 because we want
     # the cached data regardless of age
     projects = wf.cached_data('projects', None, max_age=0)
+    clients = wf.cached_data('clients', None, max_age=0)
 
     # Start update script if cached data is too old (or doesn't exist)
     if not wf.cached_data_fresh('projects', max_age=600):
+        update_data('refresh')
+
+    if not wf.cached_data_fresh('clients', max_age=600):
         update_data('refresh')
 
     # Notify the user if the cache is being updated
@@ -355,6 +350,12 @@ def main(wf):
         wf.send_feedback()
         return 0
 
+    # TODO: is this efficient?
+    if not clients:
+        wf.add_item('No clients found', icon='icons/warning.png')
+        wf.send_feedback()
+        return 0
+
     ####################################################################
     # Show submenu options for project
     ####################################################################
@@ -368,8 +369,8 @@ def main(wf):
         project = get_project_data(args.project_id)
 
         # Build report URLs
-        report_time = build_report_url(10, project)
-        report_fees = build_report_url(8, project)
+        report_time = build_report_url(25, project)
+        report_fees = build_report_url(27, project)
 
         # Add options for projects
         wf.add_item(title='View project',

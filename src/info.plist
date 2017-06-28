@@ -98,6 +98,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A53C8947-4B33-46B9-8AA2-AC88428A7064</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>841A7ED1-350F-4642-8FAA-F72A886D3153</key>
 		<array>
@@ -253,6 +263,8 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>fixedorder</key>
@@ -351,6 +363,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -413,6 +427,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -462,6 +478,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -573,6 +591,23 @@
 			<string>E7A7AACE-ACF3-4A62-B330-F17D3C1DB1CF</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>A53C8947-4B33-46B9-8AA2-AC88428A7064</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -789,6 +824,13 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 			<integer>220</integer>
 			<key>ypos</key>
 			<integer>760</integer>
+		</dict>
+		<key>A53C8947-4B33-46B9-8AA2-AC88428A7064</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1150</integer>
+			<key>ypos</key>
+			<integer>490</integer>
 		</dict>
 		<key>A7CEF2B0-4A08-4310-A764-2F14138551C5</key>
 		<dict>
