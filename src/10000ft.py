@@ -43,13 +43,13 @@ def get_project_data(project_id):
 
 def get_client_data(client_name):
     """Find the client matching the client_name."""
-    wf.logger.debug('starting get_client_data')
+    log.debug('starting get_client_data')
     clients = wf.cached_data('clients', None, max_age=0)
 
     # Loop through clients and return client with a match
     for client in clients:
         if client['name'] == client_name:
-            wf.logger.debug('get_client_id finished, client_data: ' + str(client))
+            log.debug('get_client_id finished, client_data: ' + str(client))
             return client
 
 
@@ -101,14 +101,14 @@ def project_filter(filename):
 
 def update_data(update_method):
     """Update project data from 10.000ft"""
-    wf.logger.debug('Starting update')
+    log.debug('Starting update')
     cmd = ['/usr/bin/python', wf.workflowfile('update.py')]
     if update_method == 'force':
         cmd.append('--update')
         cmd.append('force')
 
     # Update projects data
-    wf.logger.debug('Run update command : {}'.format(cmd))
+    log.debug('Run update command : {}'.format(cmd))
     run_in_background('update', cmd)
 
     return 0
@@ -116,7 +116,7 @@ def update_data(update_method):
 
 def update_project(project_id, action):
     """Update specific project in 10.000ft."""
-    wf.logger.info('Started updating project')
+    log.info('Started updating project')
 
     import json
     from lib import pycurl
@@ -152,7 +152,7 @@ def update_project(project_id, action):
 
     # Capture the response and store the json in a dictionary
     result = buffer.getvalue()
-    wf.logger.info('Request is finished. Result from 10.000ft: ' + str(result))
+    log.info('Request is finished. Result from 10.000ft: ' + str(result))
 
     project = ''
 
@@ -167,8 +167,8 @@ def update_project(project_id, action):
     # Finishing up based on response from 10.000ft
     if project_deleted is True:
         # The project is deleted!
-        wf.logger.info('The project with id ' + project_id +
-                       ' is succesfully deleted from 10.000ft')
+        log.info('The project with id ' + project_id +
+                 ' is succesfully deleted from 10.000ft')
         notify_title = 'Your project is deleted!'
         notify_text = 'The project is succesfully deleted from 10.000ft'
 
@@ -177,7 +177,7 @@ def update_project(project_id, action):
     elif 'id' in project:
         # If we get an object with a project ID this means that the project
         # update of data was succesfull
-        wf.logger.debug('Processed result to project: ' + str(project))
+        log.debug('Processed result to project: ' + str(project))
         # If everything goes well 10.000ft returns all the updated project info
         notify_title = 'Your project is updated!'
         notify_text = status + project['name']
@@ -189,7 +189,7 @@ def update_project(project_id, action):
         # 10.000ft returns a message if something went wrong
         notify_title = 'Something went wrong :-/'
         notify_text = project['message']
-        wf.logger.info(
+        log.info(
             'Something went wrong :-/.'
             ' Message from 10.000ft: ' + str(project['message']))
 
@@ -205,13 +205,13 @@ def update_project(project_id, action):
 
 
 def main(wf):
-    wf.logger.info('Started main')
+    log.info('Started main')
     ####################################################################
     # Check for Update
     ####################################################################
 
     # Update available?
-    # wf.logger.debug(wf.cached_data(__workflow_update_status))
+    # log.debug(wf.cached_data(__workflow_update_status))
     if wf.update_available:
         wf.add_item('A newer version is available',
                     'Press ENTER to install update',
@@ -271,7 +271,7 @@ def main(wf):
     if args.user:  # Script was passed a username
         # save the user
         wf.settings['user'] = args.user.lower()
-        wf.logger.debug('WF settings: ' + str(wf.settings))
+        log.debug('WF settings: ' + str(wf.settings))
 
         # Notify the user
         notify_title = 'Saved User-tag-name'
@@ -350,12 +350,6 @@ def main(wf):
         wf.send_feedback()
         return 0
 
-    # TODO: is this efficient?
-    if not clients:
-        wf.add_item('No clients found', icon='icons/warning.png')
-        wf.send_feedback()
-        return 0
-
     ####################################################################
     # Show submenu options for project
     ####################################################################
@@ -365,7 +359,7 @@ def main(wf):
     if wf.args[0] == '--options':
 
         # Get current project data
-        wf.logger.info('Started building options menu')
+        log.info('Started building options menu')
         project = get_project_data(args.project_id)
 
         # Build report URLs

@@ -6,6 +6,9 @@ from __future__ import unicode_literals
 import argparse
 from workflow import Workflow, PasswordNotFound
 
+# Will be populated later
+log = None
+
 
 def get_projects(api_key):
     """Retrieve all projects from 10.000ft
@@ -117,7 +120,7 @@ def main(wf):
 
     args = parser.parse_args(wf.args)
 
-    wf.logger.info('update_method = ' + args.update_method)
+    log.debug('update_method = ' + str(args.update_method))
 
     ####################################################################
     # Run argument-specific actions
@@ -150,12 +153,12 @@ def main(wf):
         projects = wf.cached_data('projects', wrapper, max_age=max_age)
 
         # Record our progress in the log file
-        wf.logger.info('{} projects cached, max_age {} second(s)'.format(
+        log.info('{} projects cached, max_age {} second(s)'.format(
             len(projects), max_age))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it
-        wf.logger.error('No API key saved')
+        log.error('No API key saved')
 
     try:
         # Get API key from Keychain
@@ -174,12 +177,12 @@ def main(wf):
         # Get the new data
         clients = wf.cached_data('clients', wrapper, max_age=max_age)
         # Record our progress in the log file
-        wf.logger.info('{} clients cached, max_age {} second(s)'.format(
+        log.debug('{} clients cached, max_age {} second(s)'.format(
             len(clients), max_age))
 
     except PasswordNotFound:  # API key has not yet been set
         # Nothing we can do about this, so just log it
-        wf.logger.error('No API key saved')
+        log.error('No API key saved')
 if __name__ == '__main__':
     wf = Workflow()
     log = wf.logger
