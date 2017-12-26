@@ -37,31 +37,16 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 <img src="docs/screenshot2.png" alt="Screenshot2.png" />
 
-## Developers
-
-If you want to contribute, fork this repository and submit a pull request.
-
-To make the project work locally on your machine, clone the repository, go to the directory and issue the following commands:
-
-    $ pip install --target=. Alfred-Workflow==1.27
-    $ pip install --target=lib -r requirements.txt
-
-Alternatively, if you would rather work with a virtual environment, run these commands:
-
-    $ virtualenv --python=python2.7 .venv
-    $ source .venv/bin/activate
-    $ pip install -r requirements.txt
-
 ## Changelog
 
-#### v0.5.3.1
+#### v0.5.4
 - hotfix for pycurl and openssl
+- upgraded alfred-workflow to v1.32
 
 #### v0.5.3
 - Added Hotkey
 - Improved force update cache through Alfred and when archiving or deleting a project
 - Fixed encoding issue with urlencode
-
 
 #### v0.5.2
 - Hotfix for bug deleting / archiving projects
