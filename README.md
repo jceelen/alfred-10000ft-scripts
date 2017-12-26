@@ -39,6 +39,10 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 
 ## Changelog
 
+#### v0.5.4
+- hotfix for pycurl and openssl
+- upgraded alfred-workflow to v1.32
+
 #### v0.5.3
 - Added Hotkey
 - Improved force update cache through Alfred and when archiving or deleting a project
