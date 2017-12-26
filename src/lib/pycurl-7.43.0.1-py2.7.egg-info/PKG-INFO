@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: pycurl
-Version: 7.43.0
+Version: 7.43.0.1
 Summary: PycURL -- A Python Interface To The cURL library
 Home-page: http://pycurl.io/
 Author: Oleg Pudeyev
@@ -26,15 +26,15 @@ Description: PycURL -- A Python Interface To The cURL library
         
         .. _was benchmarked: http://stackoverflow.com/questions/15461995/python-requests-vs-pycurl-performance
         .. _requests: http://python-requests.org/
-        .. _Multi: http://curl.haxx.se/libcurl/c/libcurl-multi.html
-        .. _share: http://curl.haxx.se/libcurl/c/libcurl-share.html
+        .. _Multi: https://curl.haxx.se/libcurl/c/libcurl-multi.html
+        .. _share: https://curl.haxx.se/libcurl/c/libcurl-share.html
         .. _Tornado: http://www.tornadoweb.org/
         
         
         Requirements
         ------------
         
-        - Python 2.6, 2.7 or 3.1 through 3.5.
+        - Python 2.6, 2.7 or 3.1 through 3.6.
         - libcurl 7.19.0 or better.
         
         
@@ -72,7 +72,7 @@ Description: PycURL -- A Python Interface To The cURL library
         
         .. _curl-and-python mailing list: http://cool.haxx.se/mailman/listinfo/curl-and-python
         .. _Stack Overflow: http://stackoverflow.com/questions/tagged/pycurl
-        .. _Mailing list archives: http://curl.haxx.se/mail/list.cgi?list=curl-and-python
+        .. _Mailing list archives: https://curl.haxx.se/mail/list.cgi?list=curl-and-python
         .. _via GitHub: https://github.com/pycurl/pycurl/issues
         
         
@@ -83,7 +83,7 @@ Description: PycURL -- A Python Interface To The cURL library
         based on the libcurl license. The complete text of the licenses is available
         in COPYING-LGPL_ and COPYING-MIT_ files in the source distribution.
         
-        .. _libcurl: http://curl.haxx.se/libcurl/
+        .. _libcurl: https://curl.haxx.se/libcurl/
         .. _urllib: http://docs.python.org/library/urllib.html
         .. _COPYING-LGPL: https://raw.githubusercontent.com/pycurl/pycurl/master/COPYING-LGPL
         .. _COPYING-MIT: https://raw.githubusercontent.com/pycurl/pycurl/master/COPYING-MIT
@@ -98,6 +98,13 @@ Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: Microsoft :: Windows
 Classifier: Operating System :: POSIX
 Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
 Classifier: Topic :: Internet :: File Transfer Protocol (FTP)
 Classifier: Topic :: Internet :: WWW/HTTP

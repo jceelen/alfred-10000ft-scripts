@@ -21,12 +21,15 @@ else:
     except ImportError:
         from StringIO import StringIO as BytesIO
 
+# We should ignore SIGPIPE when using pycurl.NOSIGNAL - see
+# the libcurl tutorial for more info.
 try:
     import signal
     from signal import SIGPIPE, SIG_IGN
-    signal.signal(SIGPIPE, SIG_IGN)
 except ImportError:
     pass
+else:
+    signal.signal(SIGPIPE, SIG_IGN)
 
 
 class Curl:
@@ -83,6 +86,8 @@ class Curl:
         if relative_url:
             self.set_option(pycurl.URL, urljoin(self.base_url, relative_url))
         self.payload = None
+        self.payload_io.seek(0)
+        self.payload_io.truncate()
         self.hdr = ""
         self.handle.perform()
         self.payload = self.payload_io.getvalue()
@@ -168,7 +173,7 @@ class Curl:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        url = 'http://curl.haxx.se'
+        url = 'https://curl.haxx.se'
     else:
         url = sys.argv[1]
     c = Curl()
