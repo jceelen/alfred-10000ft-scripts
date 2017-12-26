@@ -40,6 +40,8 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 ## Changelog
 #### v0.5.5
 - Fix for update loop where the script keeps showing the `Fetching data from 10.000ft message`
+- updated reports to work with 10.000ft v3 reports
+- simplified logging
 - cleaned up files
 
 #### v0.5.4
