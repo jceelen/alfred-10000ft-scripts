@@ -54,13 +54,14 @@ Alternatively, if you would rather work with a virtual environment, run these co
 
 ## Changelog
 
+#### v0.5.3.1
+- hotfix for pycurl and openssl
+
 #### v0.5.3
 - Added Hotkey
 - Improved force update cache through Alfred and when archiving or deleting a project
 - Fixed encoding issue with urlencode
 
-#### v0.5.2.1
-- hotfix for pycurl and openssl
 
 #### v0.5.2
 - Hotfix for bug deleting / archiving projects
