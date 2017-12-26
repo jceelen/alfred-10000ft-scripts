@@ -363,6 +363,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -427,6 +429,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -478,6 +482,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -827,6 +833,8 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 		</dict>
 		<key>A53C8947-4B33-46B9-8AA2-AC88428A7064</key>
 		<dict>
+			<key>note</key>
+			<string>Only here for debugging purposes</string>
 			<key>xpos</key>
 			<integer>1150</integer>
 			<key>ypos</key>
@@ -902,7 +910,7 @@ Help and info: https://github.com/jceelen/alfred-10000ft-scripts</string>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.5.4</string>
+	<string>0.5.5</string>
 	<key>webaddress</key>
 	<string>www.jasperceelen.nl</string>
 </dict>

@@ -38,6 +38,9 @@ Copy your API key to the clipboard, and use `.10ksetkey` to save your API key
 <img src="docs/screenshot2.png" alt="Screenshot2.png" />
 
 ## Changelog
+#### v0.5.5
+- Fix for update loop where the script keeps showing the `Fetching data from 10.000ft message`
+- cleaned up files
 
 #### v0.5.4
 - hotfix for pycurl and openssl
