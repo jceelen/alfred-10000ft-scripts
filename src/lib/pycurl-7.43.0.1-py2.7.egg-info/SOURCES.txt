@@ -7,8 +7,6 @@ MANIFEST.in
 Makefile
 README.rst
 RELEASE-NOTES.rst
-requirements-dev-2.4.txt
-requirements-dev-2.5.txt
 requirements-dev-3.1.txt
 requirements-dev.txt
 winbuild.py
@@ -26,6 +24,8 @@ doc/pycurl.rst
 doc/quickstart.rst
 doc/release-notes.rst
 doc/release-process.rst
+doc/thread-safety.rst
+doc/troubleshooting.rst
 doc/unicode.rst
 doc/unimplemented.rst
 doc/docstrings/curl.rst
@@ -35,6 +35,7 @@ doc/docstrings/curl_getinfo.rst
 doc/docstrings/curl_pause.rst
 doc/docstrings/curl_perform.rst
 doc/docstrings/curl_reset.rst
+doc/docstrings/curl_set_ca_certs.rst
 doc/docstrings/curl_setopt.rst
 doc/docstrings/curl_setopt_string.rst
 doc/docstrings/curl_unsetopt.rst
@@ -101,6 +102,7 @@ src/threadsupport.c
 tests/__init__.py
 tests/app.py
 tests/appmanager.py
+tests/cadata_test.py
 tests/certinfo_test.py
 tests/close_socket_cb_test.py
 tests/curl_object_test.py
@@ -114,6 +116,7 @@ tests/getinfo_test.py
 tests/global_init_test.py
 tests/header_cb_test.py
 tests/header_test.py
+tests/high_level_curl_test.py
 tests/info_constants_test.py
 tests/internals_test.py
 tests/matrix.py
@@ -130,7 +133,6 @@ tests/pause_test.py
 tests/post_test.py
 tests/procmgr.py
 tests/protocol_constants_test.py
-tests/pycurl_object_test.py
 tests/read_cb_test.py
 tests/readdata_test.py
 tests/relative_url_test.py
@@ -162,6 +164,8 @@ tests/write_cb_bogus_test.py
 tests/write_test.py
 tests/write_to_stringio_test.py
 tests/xferinfo_cb_test.py
+tests/certs/ca.crt
+tests/certs/ca.key
 tests/certs/server.crt
 tests/certs/server.key
 tests/ext/test-lib.sh
@@ -191,4 +195,5 @@ tests/matrix/python30.patch
 winbuild/c-ares-vs2015.patch
 winbuild/libcurl-fix-zlib-references.patch
 winbuild/libssh2-vs2015.patch
-winbuild/openssl-fix-crt.patch
+winbuild/openssl-fix-crt-1.0.2.patch
+winbuild/openssl-fix-crt-1.1.0.patch
